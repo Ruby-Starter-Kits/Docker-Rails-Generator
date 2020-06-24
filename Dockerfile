@@ -12,10 +12,10 @@ WORKDIR /usr/src/app
 RUN gem install rails
 
 # Copy the interactive install script
-COPY interactive-install.rb /usr/src/bin
+COPY docker/interactive-install.rb /usr/src/bin
 
 # Copy the "better defaults" app template
-COPY ../App-Template /usr/src/App-Template/
+COPY App-Template /usr/src/App-Template/
 
 # Let's run the rails new command
 CMD ["ruby", "/usr/src/bin/interactive-install.rb"]
