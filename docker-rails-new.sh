@@ -7,12 +7,13 @@ set -u
 # To run, in terminal run:
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/MikeRogers0/Docker-Rails-New/master/docker-rails-new.sh)"
 
-echo "Docker Rails New - Setup a new rails app under Docker"
+echo "🚂☁☁ Running Rails Docker Install ☁☁☁"
 
 ## TODO: Check docker exists
 
 ## Run the docker image which runs the setup
-docker run --rm -it -e HOST_PWD=$(pwd) -v $(pwd):/usr/src/app ruby:2.7.1-buster /bin/sh -c 'cd /usr/src/app && bash'
+echo "🚂☁☁ Running 'rails new' with sensible defaults for docker"
+docker run --rm -it -v $(pwd):/usr/src/app mikerogers0/docker-rails-new:latest
 
 ## TODO: Now setup the App under docker (bin/setup)
 
