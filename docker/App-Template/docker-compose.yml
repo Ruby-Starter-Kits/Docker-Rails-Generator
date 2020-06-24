@@ -27,6 +27,7 @@ x-app: &app
     - bootsnap_cache:/usr/src/bootsnap:delegated
     - rails_cache:/usr/src/app/tmp/cache:delegated
     - packs:/usr/src/app/public/packs:delegated
+    - node_modules:/usr/src/app/node_modules:delegated
   depends_on:
     postgres:
       condition: service_healthy
@@ -81,9 +82,9 @@ services:
     ports:
       - "3000:3000"
 
-  worker:
-    <<: *app
-    command: bundle exec sidekiq -C config/sidekiq.yml
+#  worker:
+#    <<: *app
+#    command: bundle exec sidekiq -C config/sidekiq.yml
 
   webpacker:
     <<: *app
@@ -98,3 +99,4 @@ volumes:
   bootsnap_cache:
   rails_cache:
   packs:
+  node_modules: 
