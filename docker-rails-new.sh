@@ -12,9 +12,18 @@ echo "🚂☁☁ Running Rails Docker Install ☁☁☁"
 ## TODO: Check docker exists
 
 ## Run the docker image which runs the setup
-echo "🚂☁☁ Running 'rails new' with sensible defaults for docker"
+echo "🚂☁☁ Running 'rails new' with sensible defaults for docker ☁☁☁"
 docker run --rm -it -v $(pwd):/usr/src/app mikerogers0/docker-rails-new:latest
 
-## TODO: Now setup the App under docker (bin/setup)
+## Now setup the App under docker
+echo "🚂☁☁ Building docker container for your app ☁☁☁"
+docker-compose --file $(pwd)/App/docker-compose.yml build
 
-## TODO: Turn on the app & open it in the browser.
+echo "🚂☁☁ Completing installation of Rails ☁☁☁"
+docker-compose --file $(pwd)/App/docker-compose.yml run --rm web /bin/sh -c 'bundle && rails webpacker:install && bin/setup'
+
+## Summarise what people need to do:
+echo "🚂☁☁ You're good to go ☁☁☁"
+echo "Installed to directory: $(pwd)/App"
+echo "To start your rails server: cd $(pwd)/App && docker-compose up"
+echo "Then navigate to: http://127.0.0.1:3000"

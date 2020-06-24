@@ -4,15 +4,25 @@ require "readline"
 
 @arguments = [
   "--database=postgresql",
-  "--webpack=stimulus",
-  "--skip-bundle"
+  "--skip-bundle",
+  "--skip-webpack-install"
 ].join(' ')
 
-# Confirm the app name
-new_app_path = Readline.readline("Please confirm your app_path (Default is #{@app_path}): ", true)
-
-if new_app_path != ""
-  @app_path = new_app_path
-end
-
+# Install rails
 system("rails new #{@app_path} #{@arguments}")
+
+# Remove the files which often are confusing to newbies.
+system("rm /usr/src/app/#{@app_path}/config/credentials.yml.enc") 
+system("rm /usr/src/app/#{@app_path}/config/master.key") 
+system("rm /usr/src/app/#{@app_path}/config/database.yml") 
+
+# Copy the docker files
+system("cp -ra /usr/src/App-Template/* /usr/src/app/#{@app_path}/")
+
+# Copy the hidden files
+system("cp -ra /usr/src/App-Template/.env.sample /usr/src/app/#{@app_path}/.env.sample")
+system("cp -ra /usr/src/App-Template/.dockerignore /usr/src/app/#{@app_path}/.dockerignore")
+
+# Copy sample files
+system("cp -ra /usr/src/App-Template/.env.sample /usr/src/app/#{@app_path}/.env")
+system("cp -ra /usr/src/App-Template/config/database.yml.sample /usr/src/app/#{@app_path}/config/database.yml")
