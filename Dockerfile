@@ -1,6 +1,12 @@
-FROM ruby:2.7.1-buster AS development
+FROM ruby:2.7.1-alpine AS builder
 
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
+
+RUN apk add --no-cache --virtual \
+    bash build-base \
+    git
+
+FROM builder as rails-installer
 
 # Setup directories within our container to run the code.
 RUN mkdir -p /usr/src/bin

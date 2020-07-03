@@ -12,9 +12,6 @@ x-app: &app
     target: development
   env_file:
     - .env
-  command: >
-    bash -c "bundle check || bundle install &&
-    yarn install --check-files"
   environment:
     RAILS_LOG_TO_STDOUT: enabled
     REDIS_URL: redis://@redis:6379/1
@@ -23,7 +20,7 @@ x-app: &app
     BOOTSNAP_CACHE_DIR: /usr/src/bootsnap
   volumes:
     - .:/usr/src/app:cached
-    - ~/.docker-data/ruby/2.7.1/bundler:/usr/local/bundle:delegated
+    - bundler:/usr/local/bundle:delegated
     - bootsnap_cache:/usr/src/bootsnap:delegated
     - rails_cache:/usr/src/app/tmp/cache:delegated
     - packs:/usr/src/app/public/packs:delegated
@@ -39,7 +36,9 @@ services:
     image: postgres:11.7-alpine
     mem_limit: 64m
     volumes:
-      - ~/.docker-data/rails-app/postgresql:/var/lib/postgresql/data:delegated
+      - postgresql:/var/lib/postgresql/data:delegated
+    # ports:
+    #  - 5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -64,9 +63,9 @@ services:
       --rdbchecksum yes
       --dir /data
     volumes:
-      - ~/.docker-data/rails-app/redis:/data:delegated
-    ports:
-      - 6379
+      - redis:/data:delegated
+    # ports:
+    #  - 6379
     restart: on-failure
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -80,7 +79,7 @@ services:
     <<: *app
     command: bash -c "rm -rf /usr/src/app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
-      - "3000:3000"
+      - 3000
 
 #  worker:
 #    <<: *app
@@ -93,9 +92,12 @@ services:
     environment:
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
     ports:
-      - '3035:3035'
+      - 3035
 
 volumes:
+  postgresql:
+  redis:
+  bundler:
   bootsnap_cache:
   rails_cache:
   packs:
