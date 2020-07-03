@@ -2,14 +2,19 @@ FROM ruby:2.7.1-alpine AS development
 
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
 
-# Install the Essentials
-ENV BUILD_DEPS="curl tar wget linux-headers bash" \
-    DEV_DEPS="ruby-dev build-base postgresql-dev zlib-dev libxml2-dev libxslt-dev readline-dev tzdata git nodejs vim"
+RUN apk add --no-cache --virtual \
+    #
+    # required
+    tzdata build-base libffi-dev \
+    nodejs-dev yarn bash \
+    ruby-dev postgresql-dev zlib-dev libxml2-dev libxslt-dev readline-dev \
+    # Nice to haves
+    git \
+    #
+    # Fixes watch file issues with things like HMR
+    libnotify-dev
 
-RUN apk add --update --upgrade $BUILD_DEPS $DEV_DEPS
-
-# Install Yarn
-RUN apk add --update yarn
+FROM builder as development
 
 # Add the current apps files into docker image
 RUN mkdir -p /usr/src/app

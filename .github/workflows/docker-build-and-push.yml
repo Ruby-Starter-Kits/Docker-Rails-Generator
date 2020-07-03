@@ -1,0 +1,19 @@
+name: Docker (Build & Push)
+
+on:
+  schedule:
+    - cron:  '0 5 1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    if: false
+    steps:
+      - uses: actions/checkout@master
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: mikerogers0/rails-installer
+          tags: latest
