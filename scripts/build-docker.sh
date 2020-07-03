@@ -1,4 +1,4 @@
 #!/bin/bash
 set -u
 
-docker build $(pwd) -t mikerogers0/rails-installer:latest
+docker build $(pwd) -t rubystarterkits/rails-installer:latest
