@@ -1,15 +1,16 @@
-FROM ruby:2.7.1-alpine AS development
+FROM ruby:2.7.1-alpine AS builder
 
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
 
-RUN apk add --no-cache --virtual \
+RUN apk add --no-cache --virtual --update --upgrade \
     #
     # required
-    tzdata build-base libffi-dev \
-    nodejs-dev yarn bash \
+    bash \
+    build-base libffi-dev \
+    nodejs yarn tzdata \
     ruby-dev postgresql-dev zlib-dev libxml2-dev libxslt-dev readline-dev \
     # Nice to haves
-    git \
+    git vim \
     #
     # Fixes watch file issues with things like HMR
     libnotify-dev
@@ -25,9 +26,6 @@ WORKDIR /usr/src/app
 # RUN apk add --update $(cat /usr/src/app/Aptfile | xargs)
 
 ENV PATH /usr/src/app/bin:$PATH
-
-# Set ruby version
-COPY .ruby-version /usr/src/app
 
 # Install latest bundler
 RUN bundle config --global silence_root_warning 1
