@@ -2,13 +2,13 @@ FROM ruby:2.7.1-alpine AS builder
 
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
 
-RUN apk add --no-cache --virtual --update --upgrade \
+RUN apk add --no-cache --virtual \
     #
     # required
     bash \
     build-base libffi-dev \
     nodejs yarn tzdata \
-    ruby-dev postgresql-dev zlib-dev libxml2-dev libxslt-dev readline-dev \
+    postgresql-dev zlib-dev libxml2-dev libxslt-dev readline-dev \
     # Nice to haves
     git vim \
     #
