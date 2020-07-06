@@ -3,7 +3,7 @@ FROM ruby:2.7.1-alpine AS builder
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
 
 RUN apk add --no-cache --virtual \
-    bash build-base \
+    build-base bash \
     git
 
 FROM builder as rails-installer
