@@ -27,7 +27,7 @@ jobs:
         gem install rails
     - name: Commit files
       run: |
-        cd ${{ $GITHUB_WORKSPACE }}/App
+        cd $GITHUB_WORKSPACE/App
         shopt -s extglob
         rm -- !(.git/*)
         rails new . --database=postgresql
