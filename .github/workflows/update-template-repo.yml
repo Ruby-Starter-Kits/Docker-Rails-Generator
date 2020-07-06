@@ -12,6 +12,8 @@ jobs:
       with:
         repository: 'Ruby-Starter-Kits/Docker-Rails-New'
         path: 'App'
+        persist-credentials: false
+        fetch-depth: 0
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
