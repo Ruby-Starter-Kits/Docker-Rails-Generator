@@ -1,0 +1,40 @@
+name: Update Template Repo
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: 'Docker-Rails-New'
+        path: 'App'
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.1
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - name: Install rails gem
+      run: |
+        gem install rails
+    - name: Commit files
+      run: |
+        cd ${{ $GITHUB_WORKSPACE }}/App
+        shopt -s extglob
+        rm -- !(.git/*)
+        rails new . --database=postgresql
+        git config --local user.email "github-actions@example.com"
+        git config --local user.name "GitHub Actions"
+        git commit -am "[nodoc] Update " || echo "No changes to commit"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
