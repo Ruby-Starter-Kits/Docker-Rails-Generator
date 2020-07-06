@@ -27,16 +27,14 @@ jobs:
         gem install rails
     - name: Build & commit new files
       run: |
-        cd $GITHUB_WORKSPACE/App
+        ls -al
+        cd App
         find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
         rails new . --database=postgresql --skip-bundle --skip-webpack-install
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
         git commit -am "[nodoc] Rails `rails -v` update" || echo "No changes to commit"
-
-        remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/Ruby-Starter-Kits/Docker-Rails-New.git"
-        git push "${remote_repo}"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
