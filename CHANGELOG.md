@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Fixing docker build errors by removing --virtual flag [\#5](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/5) ([MikeRogers0](https://github.com/MikeRogers0))
 - Updating Dockerfile to make it more reliable running rails [\#3](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/3) ([MikeRogers0](https://github.com/MikeRogers0))
 - Changing Organisation name to Ruby Starter Kits [\#2](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/2) ([MikeRogers0](https://github.com/MikeRogers0))
 - Pulling in learnings from Bridgetown [\#1](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/1) ([MikeRogers0](https://github.com/MikeRogers0))
