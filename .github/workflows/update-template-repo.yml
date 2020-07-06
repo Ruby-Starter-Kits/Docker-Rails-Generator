@@ -33,6 +33,7 @@ jobs:
         rails new . --database=postgresql
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
+        git add .
         git commit -am "[nodoc] Update " || echo "No changes to commit"
     - name: Push changes
       uses: ad-m/github-push-action@master
