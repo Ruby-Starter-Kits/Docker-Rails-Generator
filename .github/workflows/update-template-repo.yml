@@ -28,14 +28,15 @@ jobs:
     - name: Commit files
       run: |
         cd $GITHUB_WORKSPACE/App
-        shopt -s extglob
-        rm -- !(.git/*)
+        find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
         rails new . --database=postgresql
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
-        git commit -am "[nodoc] Update " || echo "No changes to commit"
+        git commit -am "[nodoc] Rails `rails -v` update" || echo "No changes to commit"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: 'Ruby-Starter-Kits/Docker-Rails-New'
+        path: 'App'
