@@ -34,9 +34,12 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add .
         git commit -am "[nodoc] Rails `rails -v` update" || echo "No changes to commit"
+
+        remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/Ruby-Starter-Kits/Docker-Rails-New.git"
+        git push "${remote_repo}"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         repository: 'Ruby-Starter-Kits/Docker-Rails-New'
-        directory: "$GITHUB_WORKSPACE/App"
+        directory: "${{GITHUB_WORKSPACE}}/App"
