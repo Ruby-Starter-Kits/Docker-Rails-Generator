@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        repository: 'Docker-Rails-New'
+        repository: 'Ruby-Starter-Kits/Docker-Rails-New'
         path: 'App'
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
