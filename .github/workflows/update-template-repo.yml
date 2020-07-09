@@ -10,8 +10,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        repository: 'Ruby-Starter-Kits/Docker-Rails-New'
-        path: 'App'
+        repository: "Ruby-Starter-Kits/Docker-Rails-New"
+        path: "App"
+        persist-credentials: false
+        fetch-depth: 0
+    - uses: actions/checkout@v2
+      with:
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
+        path: 'Docker-Rails-Installer'
         persist-credentials: false
         fetch-depth: 0
     - name: Set up Ruby 2.7
@@ -27,16 +33,24 @@ jobs:
     - name: Install rails gem
       run: |
         gem install rails
-    - name: Build & commit new files
+    - name: Clear previous build
       run: |
         ls -al
-        cd App
+        cd $GITHUB_WORKSPACE/App
         find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
-        rails new . --database=postgresql --skip-bundle --skip-webpack-install
+    - name: Build & commit new files
+      run: |
+        cd $GITHUB_WORKSPACE
+        docker build $GITHUB_WORKSPACE/Docker-Rails-Installer -t rubystarterkits/rails-installer:latest
+        docker run --rm -it -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
+    - name: Commit any new files
+      run: |
+        cd $GITHUB_WORKSPACE/App
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
-        git commit -am "[nodoc] Rails `rails -v` update" || echo "No changes to commit"
+        git commit -am "Rails `docker run --rm -it rubystarterkits/rails-installer:latest rails -v` update" || echo "No changes to commit"
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
