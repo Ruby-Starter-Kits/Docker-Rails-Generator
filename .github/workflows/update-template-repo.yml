@@ -13,22 +13,6 @@ jobs:
         repository: "Ruby-Starter-Kits/Docker-Rails-New"
         path: App
         persist-credentials: false
-        fetch-depth: 0
-    - uses: actions/checkout@v2
-      with:
-        repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
-        path: Docker-Rails-Installer
-        persist-credentials: false
-        fetch-depth: 0
-    - uses: docker/build-push-action@v1
-      if: false
-      with:
-        repository: rubystarterkits/rails-installer
-        tags: latest
-        push: false
-        path: Docker-Rails-Installer
-        cache_froms: ruby:2.7.1-alpine, rubystarterkits/rails-installer:latest
-        always_pull: true
     - name: Clear previous build
       run: |
         cd $GITHUB_WORKSPACE/App
