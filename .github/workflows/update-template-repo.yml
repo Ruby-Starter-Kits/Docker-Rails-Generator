@@ -8,29 +8,30 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-    - name: 'Verify variablees'
-      run: |
-        echo $GITHUB_WORKSPACE
-        ls -al $GITHUB_WORKSPACE
-        echo $(pwd)
     - uses: actions/checkout@v2
       with:
         repository: "Ruby-Starter-Kits/Docker-Rails-New"
-        path: $GITHUB_WORKSPACE/App
+        path: App
         persist-credentials: false
         fetch-depth: 0
     - uses: actions/checkout@v2
       with:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
-        path: $GITHUB_WORKSPACE/Docker-Rails-Installer
+        path: Docker-Rails-Installer
         persist-credentials: false
         fetch-depth: 0
+    - name: 'Verify variablees'
+      run: |
+        echo $GITHUB_WORKSPACE
+        ls -al $GITHUB_WORKSPACE
+        echo $(pwd)
     - uses: docker/build-push-action@v1
+      if: false
       with:
         repository: rubystarterkits/rails-installer
         tags: latest
         push: false
-        path: $GITHUB_WORKSPACE/Docker-Rails-Installer
+        path: Docker-Rails-Installer
         cache_froms: ruby:2.7.1-alpine, rubystarterkits/rails-installer:latest
         always_pull: true
     - name: Clear previous build
@@ -53,4 +54,4 @@ jobs:
       with:
         github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
         repository: 'Ruby-Starter-Kits/Docker-Rails-New'
-        directory: $GITHUB_WORKSPACE/App
+        directory: App
