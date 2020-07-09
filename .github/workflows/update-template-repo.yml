@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        repository: "Ruby-Starter-Kits/Docker-Rails-New"
+        repository: "Ruby-Starter-Kits/Docker-Rails-Template"
         path: App
         persist-credentials: false
     - uses: actions/checkout@v2
@@ -56,5 +56,5 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
-        repository: 'Ruby-Starter-Kits/Docker-Rails-New'
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
         directory: App
