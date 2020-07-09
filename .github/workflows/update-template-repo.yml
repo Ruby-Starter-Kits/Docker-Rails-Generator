@@ -25,7 +25,7 @@ jobs:
         repository: rubystarterkits/rails-installer
         tags: latest
         push: false
-        path: 'Docker-Rails-Installer'
+        path: $GITHUB_WORKSPACE/Docker-Rails-Installer
         cache_froms: ruby:2.7.1-alpine
         always_pull: true
     - name: Clear previous build
@@ -43,7 +43,6 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add .
         git commit -am "Rails `docker run --rm -it rubystarterkits/rails-installer:latest rails -v` update" || echo "No changes to commit"
-
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
