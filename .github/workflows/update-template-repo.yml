@@ -20,32 +20,24 @@ jobs:
         path: 'Docker-Rails-Installer'
         persist-credentials: false
         fetch-depth: 0
-    - name: Set up Ruby 2.7
-      uses: ruby/setup-ruby@v1
+    - uses: docker/build-push-action@v1
       with:
-        ruby-version: 2.7.1
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gem-
-    - name: Install rails gem
-      run: |
-        gem install rails
+        repository: rubystarterkits/rails-installer
+        tags: latest
+        push: false
+        path: 'Docker-Rails-Installer'
+        cache_froms: ruby:2.7.1-alpine
     - name: Clear previous build
       run: |
-        ls -al
-        cd $GITHUB_WORKSPACE/App
+        cd $(GITHUB_WORKSPACE)/App
         find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
-    - name: Build & commit new files
+    - name: Build latest version
       run: |
-        cd $GITHUB_WORKSPACE
-        docker build $GITHUB_WORKSPACE/Docker-Rails-Installer -t rubystarterkits/rails-installer:latest
+        cd $(GITHUB_WORKSPACE)
         docker run --rm -it -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
     - name: Commit any new files
       run: |
-        cd $GITHUB_WORKSPACE/App
+        cd $(GITHUB_WORKSPACE)/App
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
