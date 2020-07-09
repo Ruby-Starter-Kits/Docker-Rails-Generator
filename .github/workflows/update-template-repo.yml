@@ -51,7 +51,6 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add .
         git commit -am "$RAILS_VERSION | $DOCKER_RAILS_INSTALLER_VERSION" || echo "No changes to commit"
-        git log
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
