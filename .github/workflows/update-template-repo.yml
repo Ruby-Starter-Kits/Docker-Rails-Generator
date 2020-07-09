@@ -13,6 +13,20 @@ jobs:
         repository: "Ruby-Starter-Kits/Docker-Rails-New"
         path: App
         persist-credentials: false
+    - uses: actions/checkout@v2
+      with:
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
+        path: Docker-Rails-Installer
+        persist-credentials: false
+    - uses: docker/build-push-action@v1
+      if: false
+      with:
+        repository: rubystarterkits/rails-installer
+        tags: latest
+        push: false
+        path: Docker-Rails-Installer
+        cache_froms: ruby:2.7.1-alpine, rubystarterkits/rails-installer:latest
+        always_pull: true
     - name: Clear previous build
       run: |
         cd $GITHUB_WORKSPACE/App
@@ -25,11 +39,14 @@ jobs:
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
+        RAILS_VERSION=`docker run --rm rubystarterkits/rails-installer:latest rails -v`
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
-        git commit -am "Rails `docker run --rm rubystarterkits/rails-installer:latest rails -v` update" || echo "No changes to commit"
+        git commit -am "Rails $RAILS_VERSION update" || echo "No changes to commit"
+        git log
     - name: Push changes
+      if: false
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
