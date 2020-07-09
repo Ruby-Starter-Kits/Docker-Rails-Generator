@@ -33,7 +33,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         ls -al
-        find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
+        shopt -s extglob
+        rm -v !(".git")
         ls -al
     - name: Build latest template version
       run: |
