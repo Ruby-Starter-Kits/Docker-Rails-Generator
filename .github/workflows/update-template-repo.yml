@@ -1,0 +1,60 @@
+name: Update Template Repo
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron:  '0 5 1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: "!contains(github.event.head_commit.message, '[nodoc]')"
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: "Ruby-Starter-Kits/Docker-Rails-New"
+        path: App
+        persist-credentials: false
+    - uses: actions/checkout@v2
+      with:
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
+        path: Docker-Rails-Installer
+        persist-credentials: false
+    - uses: docker/build-push-action@v1
+      with:
+        repository: rubystarterkits/rails-installer
+        tags: latest
+        push: false
+        path: Docker-Rails-Installer
+        cache_froms: ruby:2.7.1-alpine, rubystarterkits/rails-installer:latest
+        always_pull: true
+    - name: Clear previous build
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        shopt -s extglob
+        rm -rfv !(".git"|"."|"..")
+    - name: Build latest template version
+      run: |
+        cd $GITHUB_WORKSPACE
+        docker run --rm -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
+    - name: Commit any new files
+      run: |
+        cd $GITHUB_WORKSPACE/Docker-Rails-Installer
+        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
+        RAILS_VERSION=`docker run --rm rubystarterkits/rails-installer:latest rails -v`
+
+        cd $GITHUB_WORKSPACE/App
+        git config --local user.email "github-actions@example.com"
+        git config --local user.name "GitHub Actions"
+        git add .
+        git commit -am "$RAILS_VERSION | $DOCKER_RAILS_INSTALLER_VERSION" || echo "No changes to commit"
+        git log
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
+        repository: 'Ruby-Starter-Kits/Docker-Rails-New'
+        directory: App
