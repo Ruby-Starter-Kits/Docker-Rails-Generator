@@ -44,7 +44,7 @@ jobs:
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
-        git commit -am "Rails `docker run --rm -it rubystarterkits/rails-installer:latest rails -v` update" || echo "No changes to commit"
+        git commit -am "Rails `docker run --rm rubystarterkits/rails-installer:latest rails -v` update" || echo "No changes to commit"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
