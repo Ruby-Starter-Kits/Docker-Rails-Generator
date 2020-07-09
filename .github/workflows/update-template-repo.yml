@@ -32,9 +32,8 @@ jobs:
     - name: Clear previous build
       run: |
         cd $GITHUB_WORKSPACE/App
-        ls -al
         shopt -s extglob
-        rm -v !(".git")
+        rm -rfv !(".git"|"."|"..")
         ls -al
     - name: Build latest template version
       run: |
