@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/compare/43a8d3381e1a5702e1dae0bdfd35170b8148c2ba...HEAD)
 
+**Implemented enhancements:**
+
+- Auto building the "Docker-Rails-New" repo from our template [\#4](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/4) ([MikeRogers0](https://github.com/MikeRogers0))
+
 **Merged pull requests:**
 
 - Fixing docker build errors by removing --virtual flag [\#5](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/5) ([MikeRogers0](https://github.com/MikeRogers0))
