@@ -26,7 +26,7 @@ jobs:
         tags: latest
         push: false
         path: $GITHUB_WORKSPACE/Docker-Rails-Installer
-        cache_froms: ruby:2.7.1-alpine
+        cache_froms: ruby:2.7.1-alpine, rubystarterkits/rails-installer:latest
         always_pull: true
     - name: Clear previous build
       run: |
