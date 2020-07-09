@@ -11,13 +11,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: "Ruby-Starter-Kits/Docker-Rails-New"
-        path: "App"
+        path: $GITHUB_WORKSPACE/App
         persist-credentials: false
         fetch-depth: 0
     - uses: actions/checkout@v2
       with:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
-        path: 'Docker-Rails-Installer'
+        path: $GITHUB_WORKSPACE/Docker-Rails-Installer
         persist-credentials: false
         fetch-depth: 0
     - uses: docker/build-push-action@v1
@@ -27,17 +27,18 @@ jobs:
         push: false
         path: 'Docker-Rails-Installer'
         cache_froms: ruby:2.7.1-alpine
+        always_pull: true
     - name: Clear previous build
       run: |
-        cd $(GITHUB_WORKSPACE)/App
+        cd $GITHUB_WORKSPACE/App
         find . -path ./.git -prune -o -exec rm -rf {} \; 2> /dev/null
-    - name: Build latest version
+    - name: Build latest template version
       run: |
-        cd $(GITHUB_WORKSPACE)
+        cd $GITHUB_WORKSPACE
         docker run --rm -it -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
     - name: Commit any new files
       run: |
-        cd $(GITHUB_WORKSPACE)/App
+        cd $GITHUB_WORKSPACE/App
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
@@ -48,4 +49,4 @@ jobs:
       with:
         github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
         repository: 'Ruby-Starter-Kits/Docker-Rails-New'
-        directory: "App"
+        directory: $GITHUB_WORKSPACE/App
