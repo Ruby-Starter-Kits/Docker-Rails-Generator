@@ -1,6 +1,6 @@
 # Docker Rails Installer
 
-A quick start for running [Ruby on Rails](https://rubyonrails.org/) with Docker.
+A quick start for running [Ruby on Rails](https://rubyonrails.org/) with Docker. You can see the files it'll generate in [Ruby-Starter-Kits/Docker-Rails-Template](https://github.com/Ruby-Starter-Kits/Docker-Rails-Template).
 
 ## Sample Usage
 
@@ -20,6 +20,5 @@ The aim is to avoid requiring developers to setup ruby & any other dependencies 
 
 ## TODO
 
-* Assess if a auto-updating template repo could also work just as well
 * Setup way to change the folder it's installed to.
 * Include other "People always install this next" stuff like sidekiq.
