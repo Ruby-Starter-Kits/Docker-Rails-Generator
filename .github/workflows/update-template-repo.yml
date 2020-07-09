@@ -2,6 +2,8 @@ name: Update Template Repo
 
 on:
   push:
+    branches:
+      - master
   schedule:
     - cron:  '0 5 1 * *'
 
@@ -9,6 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    if: "!contains(github.event.head_commit.message, '[nodoc]')"
     steps:
     - uses: actions/checkout@v2
       with:
