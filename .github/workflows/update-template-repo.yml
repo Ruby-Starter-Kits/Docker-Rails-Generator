@@ -34,12 +34,10 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         shopt -s extglob
         rm -rfv !(".git"|"."|"..")
-        ls -al
     - name: Build latest template version
       run: |
         cd $GITHUB_WORKSPACE
-        ls -al
-        docker run --rm -it -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
+        docker run --rm -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
