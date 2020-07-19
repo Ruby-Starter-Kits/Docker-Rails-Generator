@@ -17,11 +17,7 @@ system("rm /usr/src/app/#{@app_path}/config/master.key")
 system("rm /usr/src/app/#{@app_path}/config/database.yml") 
 
 # Copy the docker files
-system("cp -ra /usr/src/App-Template/* /usr/src/app/#{@app_path}/")
-
-# Copy the hidden files
-system("cp -ra /usr/src/App-Template/.env.sample /usr/src/app/#{@app_path}/.env.sample")
-system("cp -ra /usr/src/App-Template/.dockerignore /usr/src/app/#{@app_path}/.dockerignore")
+system("rsync -a /usr/src/App-Template/ /usr/src/app/#{@app_path}/")
 
 # Copy sample files
 system("cp -ra /usr/src/App-Template/.env.sample /usr/src/app/#{@app_path}/.env")
