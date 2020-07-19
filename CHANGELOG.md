@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Using rsync to copy hidden files [\#9](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/9) ([MikeRogers0](https://github.com/MikeRogers0))
 - Renaming Docker-Rails-New \> Docker-Rails-Template [\#6](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/6) ([MikeRogers0](https://github.com/MikeRogers0))
 - Auto building the "Docker-Rails-New" repo from our template [\#4](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/4) ([MikeRogers0](https://github.com/MikeRogers0))
 
