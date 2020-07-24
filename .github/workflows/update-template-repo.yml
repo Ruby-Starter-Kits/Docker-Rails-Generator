@@ -24,10 +24,6 @@ jobs:
         path: Docker-Rails-Installer
         persist-credentials: false
     - uses: satackey/action-docker-layer-caching@v0.0.3
-      with:
-        key: docker-cache-${{ hashFiles('Docker-Rails-Installer/**') }}
-        restore-keys: |
-          docker-cache-
     - uses: docker/build-push-action@v1
       with:
         repository: rubystarterkits/rails-installer
@@ -45,12 +41,6 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         docker run --rm -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
-
-    - uses: satackey/action-docker-layer-caching@v0.0.3
-      with:
-        key: docker-cache-app-${{ hashFiles('App/Gemfile') }}-${{ hashFiles('App/package.json') }}
-        restore-keys: |
-          docker-cache-app-
     - name: Run bundle & yarn
       run: |
         cd $GITHUB_WORKSPACE/App
