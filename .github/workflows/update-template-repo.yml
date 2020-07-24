@@ -45,7 +45,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose build
-        docker-compose run --rm web /bin/sh -c 'bundle && yarn'
+        docker-compose run --rm web /bin/sh -c 'bin/setup'
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Installer
