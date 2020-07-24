@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Running Bundle & Yarn after creating app [\#10](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/10) ([MikeRogers0](https://github.com/MikeRogers0))
 - Remove 'git log' from template build action [\#8](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/8) ([MikeRogers0](https://github.com/MikeRogers0))
 - Updating README's include helpful links [\#7](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/7) ([MikeRogers0](https://github.com/MikeRogers0))
 - Fixing docker build errors by removing --virtual flag [\#5](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/5) ([MikeRogers0](https://github.com/MikeRogers0))
