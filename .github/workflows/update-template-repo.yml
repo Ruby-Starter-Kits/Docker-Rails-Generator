@@ -2,7 +2,7 @@ name: Update Template Repo
 
 on:
   push:
-    branches:
+    #branches:
       #- master
   #schedule:
     #- cron:  '0 5 1 * *'
@@ -23,6 +23,11 @@ jobs:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
         path: Docker-Rails-Installer
         persist-credentials: false
+    - uses: satackey/action-docker-layer-caching@v0.0.3
+      with:
+        key: docker-cache-${{ hashFiles('Docker-Rails-Installer/**') }}
+        restore-keys: |
+          docker-cache-
     - uses: docker/build-push-action@v1
       with:
         repository: rubystarterkits/rails-installer
@@ -41,11 +46,16 @@ jobs:
         cd $GITHUB_WORKSPACE
         docker run --rm -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
 
+    - uses: satackey/action-docker-layer-caching@v0.0.3
+      with:
+        key: docker-cache-app-${{ hashFiles('App/Gemfile') }}-${{ hashFiles('App/package.json') }}
+        restore-keys: |
+          docker-cache-app-
+    - name: Run bundle & yarn
+      run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose build
         docker-compose run --rm web /bin/sh -c 'bundle && yarn'
-
-        ls -al
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Installer
