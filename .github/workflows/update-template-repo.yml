@@ -40,6 +40,11 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         docker run --rm -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
+    - name: Run bundle & yarn
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        docker-compose build
+        docker-compose run --rm web /bin/sh -c 'bin/setup'
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Installer
