@@ -21,4 +21,3 @@ system("rsync -a /usr/src/App-Template/ /usr/src/app/#{@app_path}/")
 
 # Copy sample files
 system("cp -ra /usr/src/App-Template/.env.sample /usr/src/app/#{@app_path}/.env")
-system("cp -ra /usr/src/App-Template/config/database.yml.sample /usr/src/app/#{@app_path}/config/database.yml")
