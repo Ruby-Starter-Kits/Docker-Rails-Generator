@@ -13,6 +13,7 @@
 
 **Merged pull requests:**
 
+- Increase Postgres version to 12.3 [\#13](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/13) ([MikeRogers0](https://github.com/MikeRogers0))
 - bug: Don't try to copy now removed database.sample file [\#12](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/12) ([MikeRogers0](https://github.com/MikeRogers0))
 - Running Bundle & Yarn after creating app [\#10](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/10) ([MikeRogers0](https://github.com/MikeRogers0))
 - Remove 'git log' from template build action [\#8](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/8) ([MikeRogers0](https://github.com/MikeRogers0))
