@@ -3,7 +3,7 @@ name: Update Template Repo
 on:
   push:
     branches:
-      #- master
+      - master
   schedule:
     - cron:  '0 5 1 * *'
 
@@ -81,10 +81,9 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add .
         git commit -am "$RAILS_VERSION | $DOCKER_RAILS_INSTALLER_VERSION" || echo "No changes to commit"
-        ls -al
-    #- name: Push changes
-      #uses: ad-m/github-push-action@master
-      #with:
-        #github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
-        #repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
-        #directory: App
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
+        directory: App
