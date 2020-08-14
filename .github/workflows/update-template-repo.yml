@@ -65,13 +65,17 @@ jobs:
     - name: Run rails setup
       run: |
         cd $GITHUB_WORKSPACE/App
-        docker-compose build
-        bundle && rails webpacker:install && yarn
+        docker-compose build -f docker-compose.yml -f ../Docker-Rails-Installer/docker-compose.override.yml
+        docker-compose run -f docker-compose.yml -f ../Docker-Rails-Installer/docker-compose.override.yml --rm web /bin/sh -c 'bundle && rails webpacker:install && bin/setup'
+    - name: Run any tests
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        docker-compose run -f docker-compose.yml -f ../Docker-Rails-Installer/docker-compose.override.yml --rm web /bin/sh -c 'bundle exec rails test'
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
         DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
-        RAILS_VERSION=`docker-compose run --rm web rails -v`
+        RAILS_VERSION=`docker-compose run -f docker-compose.yml -f ../Docker-Rails-Installer/docker-compose.override.yml --rm web rails -v`
 
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"

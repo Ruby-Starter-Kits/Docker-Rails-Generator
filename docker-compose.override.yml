@@ -1,0 +1,9 @@
+---
+# Docker Compose 2.4 is for local development
+# https://www.heroku.com/podcasts/codeish/57-discussing-docker-containers-and-kubernetes-with-a-docker-captain - Source on that.
+version: '2.4'
+
+x-app: &app
+  image: rails-app:latest
+  build:
+    target: production
