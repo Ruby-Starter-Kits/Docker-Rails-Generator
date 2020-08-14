@@ -20,8 +20,8 @@ jobs:
         persist-credentials: false
     - uses: actions/checkout@v2
       with:
-        repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
-        path: Docker-Rails-Installer
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Generator'
+        path: Docker-Rails-Generator
         persist-credentials: false
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
@@ -61,7 +61,7 @@ jobs:
     - name: Copy docker files
       run: |
         cd $GITHUB_WORKSPACE/App
-        rsync -a $GITHUB_WORKSPACE/Docker-Rails-Installer/App-Template/ $GITHUB_WORKSPACE/App/
+        rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template/ $GITHUB_WORKSPACE/App/
         cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
     - name: Pull docker image
       run: |
