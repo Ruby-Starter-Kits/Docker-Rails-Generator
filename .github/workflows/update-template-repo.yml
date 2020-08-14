@@ -33,6 +33,12 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
+    - uses: actions/cache@v1.1.2
+      with:
+        path: ${{ github.workspace }}/App/node_modules
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node_modules-
     - name: Build Environment
       run: |
         cd $GITHUB_WORKSPACE/App
@@ -43,7 +49,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         shopt -s extglob
-        rm -rfv !(".git"|"."|"..")
+        rm -rfv !(".git"|"."|".."|"node_modules")
     - name: Build latest version of rails
       run: |
         cd $GITHUB_WORKSPACE/App
