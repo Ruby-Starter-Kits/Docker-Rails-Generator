@@ -46,7 +46,7 @@ jobs:
     - name: Build latest version of rails
       run: |
         cd $GITHUB_WORKSPACE/App
-        rails new . --database=postgresql --skip-bundle --skip-webpack-install --skip-git
+        rails new . --database=postgresql --skip-bundle --skip-webpack-install
     - name: Remove files which can cause annoyances with Docker
       run: |
         cd $GITHUB_WORKSPACE/App
@@ -81,7 +81,6 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add .
         git commit -am "$RAILS_VERSION | $DOCKER_RAILS_INSTALLER_VERSION" || echo "No changes to commit"
-        ls -al
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
