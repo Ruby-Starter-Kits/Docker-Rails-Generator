@@ -3,7 +3,7 @@ name: Update Template Repo
 on:
   push:
     branches:
-      - master
+      #- master
   schedule:
     - cron:  '0 5 1 * *'
 
@@ -66,11 +66,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose build
-        docker-compose run --rm web /bin/sh -c 'bundle && rails webpacker:install && bin/setup'
-    - name: Run any tests
-      run: |
-        cd $GITHUB_WORKSPACE/App
-        docker-compose run --rm web /bin/sh -c 'bundle exec rails test'
+        bundle && rails webpacker:install && yarn
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
