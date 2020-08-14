@@ -35,8 +35,9 @@ jobs:
           ${{ runner.os }}-gem-
     - name: Build Environment
       run: |
-        cd $GITHUB_WORKSPACE
+        cd $GITHUB_WORKSPACE/app
         bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
         gem install rails
     - name: Clear previous build
       run: |
@@ -46,7 +47,7 @@ jobs:
     - name: Build latest version of rails
       run: |
         cd $GITHUB_WORKSPACE/App
-        rails new . --database=postgresql --skip-bundle --skip-webpack-install
+        rails new . --database=postgresql
     - name: Remove files which can cause annoyances with Docker
       run: |
         cd $GITHUB_WORKSPACE/App
@@ -62,16 +63,10 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0.0.5
-    - name: Run rails setup
+    - name: Test we can build
       run: |
         cd $GITHUB_WORKSPACE/App
-        docker-compose -f docker-compose.ci.yml build
-        docker-compose -f docker-compose.ci.yml run --no-deps --rm web /bin/sh -c 'bundle && rails webpacker:install'
-    - name: Cleanup files we shouldn't commit
-      run: |
-        cd $GITHUB_WORKSPACE/App
-        rm docker-compose.ci.yml
-        rm .env
+        docker-compose build
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
