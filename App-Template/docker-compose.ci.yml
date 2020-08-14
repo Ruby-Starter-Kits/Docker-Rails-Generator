@@ -1,8 +1,42 @@
 ---
-version: '2.4'
+version: '3.8'
 
 x-app: &app
+  image: rails-app:latest
   build:
     context: .
     dockerfile: Dockerfile
     target: production
+  env_file:
+    - .env
+  environment:
+    RAILS_LOG_TO_STDOUT: enabled
+    REDIS_URL: redis://@redis:6379/1
+    DATABASE_URL: postgres://postgres:postgres@postgres:5432/
+  volumes:
+    - .:/usr/src/app:cached
+
+services:
+  postgres:
+    image: postgres:12.3-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    logging:
+      driver: none
+
+  redis:
+    image: redis:4.0.14-alpine
+    command: >
+      --save
+      --maxmemory 128mb
+      --maxmemory-policy noeviction
+      --stop-writes-on-bgsave-error yes
+      --rdbcompression yes
+      --rdbchecksum yes
+      --dir /data
+    logging:
+      driver: none
+  web:
+    <<: *app
+    command: bash -c "rm -rf /usr/src/app/tmp/pids/server.pid && bundle exec rspec"
