@@ -29,14 +29,14 @@ jobs:
         ruby-version: 2.7.1
     - uses: actions/cache@v1.1.2
       with:
-        path: vendor/bundle
+        path: ${{ github.workspace }}/vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
     - name: Build Environment
       run: |
         cd $GITHUB_WORKSPACE/App
-        bundle config path vendor/bundle
+        bundle config path $GITHUB_WORKSPACE/vendor/bundle
         bundle install --jobs 4 --retry 3
         gem install rails
     - name: Clear previous build
