@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Build using production image to speed up build [\#19](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/19) ([MikeRogers0](https://github.com/MikeRogers0))
 - Include gitignore in template repo [\#18](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/18) ([MikeRogers0](https://github.com/MikeRogers0))
 - Switching to just generating a template repo [\#17](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/17) ([MikeRogers0](https://github.com/MikeRogers0))
 - Use organisation funding file [\#15](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/15) ([MikeRogers0](https://github.com/MikeRogers0))
