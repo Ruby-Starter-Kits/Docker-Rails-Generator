@@ -35,7 +35,7 @@ jobs:
           ${{ runner.os }}-gem-
     - name: Build Environment
       run: |
-        cd $GITHUB_WORKSPACE/app
+        cd $GITHUB_WORKSPACE/App
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         gem install rails
@@ -63,7 +63,7 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0.0.5
-    - name: Test we can build
+    - name: Test we can build docker
       run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose build
