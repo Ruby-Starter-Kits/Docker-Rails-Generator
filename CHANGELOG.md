@@ -1,32 +1,33 @@
 # Changelog
 
-## [Unreleased](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/tree/HEAD)
+## [Unreleased](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/tree/HEAD)
 
-[Full Changelog](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/compare/43a8d3381e1a5702e1dae0bdfd35170b8148c2ba...HEAD)
+[Full Changelog](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/compare/43a8d3381e1a5702e1dae0bdfd35170b8148c2ba...HEAD)
 
 **Implemented enhancements:**
 
-- Adding storage as volume to docker-compose [\#16](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/16) ([MikeRogers0](https://github.com/MikeRogers0))
-- Setup custom database.yml [\#11](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/11) ([MikeRogers0](https://github.com/MikeRogers0))
-- Using rsync to copy hidden files [\#9](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/9) ([MikeRogers0](https://github.com/MikeRogers0))
-- Renaming Docker-Rails-New \> Docker-Rails-Template [\#6](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/6) ([MikeRogers0](https://github.com/MikeRogers0))
-- Auto building the "Docker-Rails-New" repo from our template [\#4](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/4) ([MikeRogers0](https://github.com/MikeRogers0))
+- Adding storage as volume to docker-compose [\#16](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/16) ([MikeRogers0](https://github.com/MikeRogers0))
+- Setup custom database.yml [\#11](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/11) ([MikeRogers0](https://github.com/MikeRogers0))
+- Using rsync to copy hidden files [\#9](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/9) ([MikeRogers0](https://github.com/MikeRogers0))
+- Renaming Docker-Rails-New \> Docker-Rails-Template [\#6](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/6) ([MikeRogers0](https://github.com/MikeRogers0))
+- Auto building the "Docker-Rails-New" repo from our template [\#4](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/4) ([MikeRogers0](https://github.com/MikeRogers0))
 
 **Merged pull requests:**
 
-- Build using production image to speed up build [\#19](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/19) ([MikeRogers0](https://github.com/MikeRogers0))
-- Include gitignore in template repo [\#18](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/18) ([MikeRogers0](https://github.com/MikeRogers0))
-- Switching to just generating a template repo [\#17](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/17) ([MikeRogers0](https://github.com/MikeRogers0))
-- Use organisation funding file [\#15](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/15) ([MikeRogers0](https://github.com/MikeRogers0))
-- Increase Postgres version to 12.3 [\#13](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/13) ([MikeRogers0](https://github.com/MikeRogers0))
-- bug: Don't try to copy now removed database.sample file [\#12](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/12) ([MikeRogers0](https://github.com/MikeRogers0))
-- Running Bundle & Yarn after creating app [\#10](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/10) ([MikeRogers0](https://github.com/MikeRogers0))
-- Remove 'git log' from template build action [\#8](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/8) ([MikeRogers0](https://github.com/MikeRogers0))
-- Updating README's include helpful links [\#7](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/7) ([MikeRogers0](https://github.com/MikeRogers0))
-- Fixing docker build errors by removing --virtual flag [\#5](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/5) ([MikeRogers0](https://github.com/MikeRogers0))
-- Updating Dockerfile to make it more reliable running rails [\#3](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/3) ([MikeRogers0](https://github.com/MikeRogers0))
-- Changing Organisation name to Ruby Starter Kits [\#2](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/2) ([MikeRogers0](https://github.com/MikeRogers0))
-- Pulling in learnings from Bridgetown [\#1](https://github.com/Ruby-Starter-Kits/Docker-Rails-Installer/pull/1) ([MikeRogers0](https://github.com/MikeRogers0))
+- Renaming repo to Docker-Rails-Generator [\#20](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/20) ([MikeRogers0](https://github.com/MikeRogers0))
+- Build using production image to speed up build [\#19](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/19) ([MikeRogers0](https://github.com/MikeRogers0))
+- Include gitignore in template repo [\#18](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/18) ([MikeRogers0](https://github.com/MikeRogers0))
+- Switching to just generating a template repo [\#17](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/17) ([MikeRogers0](https://github.com/MikeRogers0))
+- Use organisation funding file [\#15](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/15) ([MikeRogers0](https://github.com/MikeRogers0))
+- Increase Postgres version to 12.3 [\#13](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/13) ([MikeRogers0](https://github.com/MikeRogers0))
+- bug: Don't try to copy now removed database.sample file [\#12](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/12) ([MikeRogers0](https://github.com/MikeRogers0))
+- Running Bundle & Yarn after creating app [\#10](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/10) ([MikeRogers0](https://github.com/MikeRogers0))
+- Remove 'git log' from template build action [\#8](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/8) ([MikeRogers0](https://github.com/MikeRogers0))
+- Updating README's include helpful links [\#7](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/7) ([MikeRogers0](https://github.com/MikeRogers0))
+- Fixing docker build errors by removing --virtual flag [\#5](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/5) ([MikeRogers0](https://github.com/MikeRogers0))
+- Updating Dockerfile to make it more reliable running rails [\#3](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/3) ([MikeRogers0](https://github.com/MikeRogers0))
+- Changing Organisation name to Ruby Starter Kits [\#2](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/2) ([MikeRogers0](https://github.com/MikeRogers0))
+- Pulling in learnings from Bridgetown [\#1](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/1) ([MikeRogers0](https://github.com/MikeRogers0))
 
 
 
