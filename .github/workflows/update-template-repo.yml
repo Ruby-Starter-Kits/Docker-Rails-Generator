@@ -51,7 +51,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
-        rm $GITHUB_WORKSPACE/App/config/master.key"
+        rm $GITHUB_WORKSPACE/App/config/master.key
     - name: Copy docker files
       run: |
         cd $GITHUB_WORKSPACE/App
