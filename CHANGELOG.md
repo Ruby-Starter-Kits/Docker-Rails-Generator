@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Making it clearer this is Rails + Docker :D [\#21](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/21) ([MikeRogers0](https://github.com/MikeRogers0))
 - Renaming repo to Docker-Rails-Generator [\#20](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/20) ([MikeRogers0](https://github.com/MikeRogers0))
 - Build using production image to speed up build [\#19](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/19) ([MikeRogers0](https://github.com/MikeRogers0))
 - Include gitignore in template repo [\#18](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/18) ([MikeRogers0](https://github.com/MikeRogers0))
