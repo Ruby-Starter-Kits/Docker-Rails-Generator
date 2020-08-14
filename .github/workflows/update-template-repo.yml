@@ -57,11 +57,20 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Installer/App-Template/ $GITHUB_WORKSPACE/App/
         cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
+    - name: Pull docker image
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        docker-compose pull
+    - uses: satackey/action-docker-layer-caching@v0.0.5
     - name: Run rails setup
       run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose build
         docker-compose run --rm web /bin/sh -c 'bundle && rails webpacker:install && bin/setup'
+    - name: Run any tests
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        docker-compose run --rm web /bin/sh -c 'bundle exec rails test'
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
