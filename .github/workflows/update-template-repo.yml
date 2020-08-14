@@ -71,7 +71,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
-        RAILS_VERSION=`docker-compose -f docker-compose.ci.yml run --rm web rails -v`
+        RAILS_VERSION=`rails -v`
 
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
