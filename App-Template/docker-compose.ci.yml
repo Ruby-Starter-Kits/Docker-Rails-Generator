@@ -1,0 +1,6 @@
+---
+x-app: &app
+  build:
+    context: .
+    dockerfile: Dockerfile
+    target: production

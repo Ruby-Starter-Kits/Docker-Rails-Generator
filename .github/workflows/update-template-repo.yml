@@ -65,17 +65,22 @@ jobs:
     - name: Run rails setup
       run: |
         cd $GITHUB_WORKSPACE/App
-        docker-compose -f docker-compose.prod.yml build
-        docker-compose -f docker-compose.prod.yml run --rm web /bin/sh -c 'bundle && rails webpacker:install && bin/setup'
+        docker-compose -f docker-compose.ci.yml build
+        docker-compose -f docker-compose.ci.yml run --rm web /bin/sh -c 'bundle && rails webpacker:install && bin/setup'
     - name: Run any tests
       run: |
         cd $GITHUB_WORKSPACE/App
-        docker-compose -f docker-compose.prod.yml run --rm web /bin/sh -c 'bundle exec rails test'
+        docker-compose -f docker-compose.ci.yml run --rm web /bin/sh -c 'bundle exec rails test'
+    - name: Cleanup files we shouldn't commit
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        rm docker-compose.ci.yml
+        rm .env
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
         DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
-        RAILS_VERSION=`docker-compose -f docker-compose.prod.yml run --rm web rails -v`
+        RAILS_VERSION=`docker-compose -f docker-compose.ci.yml run --rm web rails -v`
 
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
