@@ -5,7 +5,8 @@ require "readline"
 @arguments = [
   "--database=postgresql",
   "--skip-bundle",
-  "--skip-webpack-install"
+  "--skip-webpack-install",
+  "--skip-git"
 ].join(' ')
 
 # Install rails
