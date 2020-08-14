@@ -3,7 +3,7 @@ name: Update Template Repo
 on:
   push:
     branches:
-      - master
+      #- master
   schedule:
     - cron:  '0 5 1 * *'
 
@@ -23,42 +23,59 @@ jobs:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Installer'
         path: Docker-Rails-Installer
         persist-credentials: false
-    - uses: docker/build-push-action@v1
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
       with:
-        repository: rubystarterkits/rails-installer
-        tags: latest
-        push: false
-        path: Docker-Rails-Installer
-        cache_froms: ruby:2.7.1-alpine, rubystarterkits/rails-installer:latest
-        always_pull: true
+        ruby-version: 2.7.1
+    - uses: actions/cache@v1.1.2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - name: Build Environment
+      run: |
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        gem install rails
     - name: Clear previous build
       run: |
         cd $GITHUB_WORKSPACE/App
         shopt -s extglob
         rm -rfv !(".git"|"."|"..")
-    - name: Build latest template version
+    - name: Build latest version of rails
       run: |
-        cd $GITHUB_WORKSPACE
-        docker run --rm -v $(pwd):/usr/src/app rubystarterkits/rails-installer:latest
-    - name: Run bundle & yarn
+        cd $GITHUB_WORKSPACE/App
+        rails new . --database=postgresql --skip-bundle --skip-webpack-install --skip-git
+    - name: Remove files which can cause annoyances with Docker
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        $GITHUB_WORKSPACE/App/config/credentials.yml.enc
+        $GITHUB_WORKSPACE/App/config/master.key"
+    - name: Copy docker files
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        rsync -a $GITHUB_WORKSPACE/Docker-Rails-Installer/App-Template/ $GITHUB_WORKSPACE/App/
+        cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
+    - name: Run rails setup
       run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose build
-        docker-compose run --rm web /bin/sh -c 'bin/setup'
+        docker-compose run --rm web /bin/sh -c 'bundle && rails webpacker:install && bin/setup'
     - name: Commit any new files
       run: |
-        cd $GITHUB_WORKSPACE/Docker-Rails-Installer
-        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
-        RAILS_VERSION=`docker run --rm rubystarterkits/rails-installer:latest rails -v`
-
         cd $GITHUB_WORKSPACE/App
+        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
+        RAILS_VERSION=`rails -v`
+
         git config --local user.email "github-actions@example.com"
         git config --local user.name "GitHub Actions"
         git add .
         git commit -am "$RAILS_VERSION | $DOCKER_RAILS_INSTALLER_VERSION" || echo "No changes to commit"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
-        repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
-        directory: App
+        ls -al
+    #- name: Push changes
+      #uses: ad-m/github-push-action@master
+      #with:
+        #github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
+        #repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
+        #directory: App
