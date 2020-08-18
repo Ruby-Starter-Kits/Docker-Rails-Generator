@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Bump satackey/action-docker-layer-caching from v0.0.5 to v0.0.8 [\#22](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/22) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Making it clearer this is Rails + Docker :D [\#21](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/21) ([MikeRogers0](https://github.com/MikeRogers0))
 - Renaming repo to Docker-Rails-Generator [\#20](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/20) ([MikeRogers0](https://github.com/MikeRogers0))
 - Build using production image to speed up build [\#19](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/19) ([MikeRogers0](https://github.com/MikeRogers0))
