@@ -67,7 +67,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose pull
-    - uses: satackey/action-docker-layer-caching@v0.0.5
+    - uses: satackey/action-docker-layer-caching@v0.0.8
     - name: Test we can build docker
       run: |
         cd $GITHUB_WORKSPACE/App
