@@ -52,7 +52,7 @@ jobs:
     - name: Build latest version of rails
       run: |
         cd $GITHUB_WORKSPACE/App
-        rails new . --database=postgresql
+        rails new . --database=postgresql --skip-spring
     - name: Remove files which can cause annoyances with Docker
       run: |
         cd $GITHUB_WORKSPACE/App
