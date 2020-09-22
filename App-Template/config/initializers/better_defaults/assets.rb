@@ -6,7 +6,7 @@ Rails.application.configure do
     'Expires' => 1.year.from_now.to_formatted_s(:rfc822)
   }
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server (Normally cdn.yourdomain.com).
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server (Normally https://cdn.yourdomain.com).
   if ENV['ASSET_HOST']
     config.action_controller.asset_host = ENV['ASSET_HOST']
     config.action_mailer.asset_host = ENV['ASSET_HOST']

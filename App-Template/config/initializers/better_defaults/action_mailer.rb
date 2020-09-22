@@ -22,7 +22,9 @@ Rails.application.configure do
       domain: 'heroku.com',
       enable_starttls_auto: true
     }
-  elsif Rails.env.development?
+  elsif Rails.env.development? && defined?(LetterOpenerWeb)
+    # https://github.com/fgrehm/letter_opener_web
+    # Preview mailers in your browser.
     config.action_mailer.delivery_method = :letter_opener_web
     config.action_mailer.perform_deliveries = true
   else
@@ -30,7 +32,5 @@ Rails.application.configure do
   end
 
   # Enable previewing mailers in review environments.
-  if ENV['ENABLE_MAILER_PREVIEWS'].present?
-    config.action_mailer.show_previews = (ENV['ENABLE_MAILER_PREVIEWS'].present? || Rails.env.development?)
-  end
+  config.action_mailer.show_previews = (ENV['ENABLE_MAILER_PREVIEWS'].present? || Rails.env.development?)
 end

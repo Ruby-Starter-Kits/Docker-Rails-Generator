@@ -1,6 +1,4 @@
-# I'm a big fan of https://github.com/puma/puma-dev for turning on my local dev environment.
-# So make sure our local environments play nicely with it.
-
+# Often you may need to whitelist the URL you use to access your local development environment (assuming you don't use 127.0.0.1).
 Rails.application.configure do
   # config.hosts << ENV['URL'] if ENV['URL'].present?
   # config.hosts << /[a-z0-9.-]+\.herokuapp\.com/
