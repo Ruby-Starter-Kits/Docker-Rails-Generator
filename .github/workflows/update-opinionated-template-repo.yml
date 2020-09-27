@@ -64,6 +64,11 @@ jobs:
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template/ $GITHUB_WORKSPACE/App/
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template-Opinionated/ $GITHUB_WORKSPACE/App/
         cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
+    - name: Install Libraries I often install next via RailsBytes
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        rails app:template LOCATION="https://railsbytes.com/script/z0gsLX"
+        rails app:template LOCATION="https://railsbytes.com/script/XnJsbX"
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
