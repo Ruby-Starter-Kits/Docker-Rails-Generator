@@ -75,7 +75,6 @@ jobs:
         echo "Installing Rubocop"
         bundle add rubocop --group "development, test"
         bundle add rubocop-rails --group "development, test"
-        bundle exec rubocop --auto-correct
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
