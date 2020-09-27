@@ -1,0 +1,91 @@
+name: Update Opinionated Template Repo
+
+on:
+  push:
+    #branches:
+      #- master
+  schedule:
+    - cron:  '0 5 1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: "!contains(github.event.head_commit.message, '[nodoc]')"
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: "Ruby-Starter-Kits/Docker-Rails-Opinionated-Template"
+        path: App
+        persist-credentials: false
+    - uses: actions/checkout@v2
+      with:
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Generator'
+        path: Docker-Rails-Generator
+        persist-credentials: false
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.1
+    - uses: actions/cache@v1.1.2
+      with:
+        path: ${{ github.workspace }}/vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - uses: actions/cache@v1.1.2
+      with:
+        path: ${{ github.workspace }}/App/node_modules
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node_modules-
+    - name: Build Environment
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        bundle config path $GITHUB_WORKSPACE/vendor/bundle
+        gem install rails
+    - name: Clear previous build
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        shopt -s extglob
+        rm -rfv !(".git"|"."|".."|"node_modules")
+    - name: Build latest version of rails
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        rails new . --database=postgresql --skip-spring
+    - name: Remove files which can cause annoyances with Docker
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
+        rm $GITHUB_WORKSPACE/App/config/master.key
+    - name: Copy docker files
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template/ $GITHUB_WORKSPACE/App/
+        rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template-Opinionated/ $GITHUB_WORKSPACE/App/
+        cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
+    - name: Pull docker image
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        docker-compose pull
+    - uses: satackey/action-docker-layer-caching@v0.0.8
+    - name: Test we can build docker
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        docker-compose build
+    - name: Commit any new files
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
+        RAILS_VERSION=`rails -v`
+
+        git config --local user.email "github-actions@example.com"
+        git config --local user.name "GitHub Actions"
+        git add .
+        git commit -am "$RAILS_VERSION | $DOCKER_RAILS_INSTALLER_VERSION" || echo "No changes to commit"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
+        repository: 'Ruby-Starter-Kits/Docker-Rails-Opinionated-Template'
+        directory: App
