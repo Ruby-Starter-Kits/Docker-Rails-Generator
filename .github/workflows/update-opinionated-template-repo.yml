@@ -78,7 +78,8 @@ jobs:
 
         echo "Sorting the gemfile"
         gem install ordinare
-        bundle exec ordinare
+        ordinare
+        bundle
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
