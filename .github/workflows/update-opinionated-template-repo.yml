@@ -75,6 +75,10 @@ jobs:
         echo "Installing Rubocop"
         bundle add rubocop --group "development, test"
         bundle add rubocop-rails --group "development, test"
+
+        echo "Sorting the gemfile"
+        gem install ordinare
+        bundle exec ordinare
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
