@@ -67,8 +67,13 @@ jobs:
     - name: Install Libraries I often install next via RailsBytes
       run: |
         cd $GITHUB_WORKSPACE/App
-        rails app:template LOCATION="https://railsbytes.com/script/z0gsLX"
-        rails app:template LOCATION="https://railsbytes.com/script/XnJsbX"
+        rm -rf test
+        bundle add rspec-rails --group "development, test"
+        rails generate rspec:install
+
+        bundle add rubocop --group "development, test"
+        bundle add rubocop-rails --group "development, test"
+        rubocop --safe-auto-correct --parallel
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
