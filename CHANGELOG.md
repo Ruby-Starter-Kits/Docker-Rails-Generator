@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Allowing access to Redis/Postgres/Web ports on localhost [\#24](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/24) ([MikeRogers0](https://github.com/MikeRogers0))
 - Improving docker-compose default settings based on Evil Martians + schneems writings  [\#23](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/23) ([MikeRogers0](https://github.com/MikeRogers0))
 - Bump satackey/action-docker-layer-caching from v0.0.5 to v0.0.8 [\#22](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/22) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Making it clearer this is Rails + Docker :D [\#21](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/21) ([MikeRogers0](https://github.com/MikeRogers0))
