@@ -6,4 +6,5 @@ Rails.application.config.generators do |g|
   g.view_specs false
   g.decorator false
   g.system_tests = nil
+  g.jbuilder false
 end
