@@ -82,8 +82,12 @@ jobs:
 
         echo "Sorting the gemfile"
         sed -i '/^[[:blank:]]*#/d;s/#.*//' Gemfile
+        echo ""
+        echo "cat Gemfile"
+        cat Gemfile
         gem install ordinare
         ordinare
+        bundle
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
