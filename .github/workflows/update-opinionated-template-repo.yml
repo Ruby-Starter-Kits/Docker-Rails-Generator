@@ -81,6 +81,7 @@ jobs:
         bundle add rubocop-rails --group "development, test"
 
         echo "Running Rubocop over everything"
+        bundle
         rubocop -a --auto-gen-config
 
         echo "Removing comments in Gemfile"
