@@ -15,7 +15,7 @@ Rails.application.configure do
   elsif ENV['SENDGRID_USERNAME'].present? && ENV['SENDGRID_PASSWORD'].present?
     config.action_mailer.smtp_settings = {
       address: 'smtp.sendgrid.net',
-      port: '587',
+      port: 587,
       authentication: :plain,
       user_name: ENV['SENDGRID_USERNAME'],
       password: ENV['SENDGRID_PASSWORD'],
