@@ -72,11 +72,16 @@ jobs:
         bundle add rspec-rails --group "development, test"
         rails generate rspec:install
 
+        bundle add redis
+        bundle add image_processing
+        bundle remove jbuilder
+
         echo "Installing Rubocop"
         bundle add rubocop --group "development, test"
         bundle add rubocop-rails --group "development, test"
 
         echo "Sorting the gemfile"
+        sed -i '/^[[:blank:]]*#/d;s/#.*//' Gemfile
         gem install ordinare
         ordinare
         bundle
