@@ -58,13 +58,13 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
         rm $GITHUB_WORKSPACE/App/config/master.key
-    - name: Copy docker files
+    - name: Copy Docker Files
       run: |
         cd $GITHUB_WORKSPACE/App
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template/ $GITHUB_WORKSPACE/App/
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template-Opinionated/ $GITHUB_WORKSPACE/App/
         cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
-    - name: Install Libraries I often install next via RailsBytes
+    - name: Install Libraries I Often Use
       run: |
         cd $GITHUB_WORKSPACE/App
         echo "Installing RSpec"
@@ -84,7 +84,6 @@ jobs:
         sed -i '/^[[:blank:]]*#/d;s/#.*//' Gemfile
         gem install ordinare
         ordinare
-        bundle
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
