@@ -80,11 +80,13 @@ jobs:
         bundle add rubocop --group "development, test"
         bundle add rubocop-rails --group "development, test"
 
+        echo "Running Rubocop over everything"
+        rubocop -a --auto-gen-config
+
+        echo "Removing comments in Gemfile"
+        sed -i '/^[[:blank:]]*#/d' Gemfile
+
         echo "Sorting the gemfile"
-        sed -i '/^[[:blank:]]*#/d;s/#.*//' Gemfile
-        echo ""
-        echo "cat Gemfile"
-        cat Gemfile
         gem install ordinare
         ordinare
         bundle
