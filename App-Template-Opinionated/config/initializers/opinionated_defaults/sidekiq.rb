@@ -1,5 +1,5 @@
-# SideKiq is the de-facto standard choice for running Background tasks
-# Here is a sample config.
+# Sidekiq is the de-facto standard choice for running Background tasks
+# You should use it to perform API requests & long running tasks.
 if defined?(Sidekiq) && ENV['REDIS_URL'].present?
   require 'sidekiq/web'
   require 'sidekiq/cron/web' if defined?(Sidekiq::Cron)
@@ -10,7 +10,7 @@ if defined?(Sidekiq) && ENV['REDIS_URL'].present?
       ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"]))
   end
 
-  # https://github.com/ondrejbartas/sidekiq-cron
+  # https://github.com/ondrejbartas/sidekiq-cron
   # Sidekiq-cron - It's a very sensible approach to performing scheduled tasks.
   Rails.application.config.after_initialize do
     schedule_file = Rails.root.join('config', 'schedule.yml')

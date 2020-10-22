@@ -1,6 +1,6 @@
-# By default Rails can generate very verbose logs.
+# By default Rails can generate very verbose logs.
 # I'm a fan of: https://github.com/roidrage/lograge
-# It makes every request a single line in the logs.
+# It makes every request a single line in the logs.
 Rails.application.configure do
   config.lograge.enabled = true
   config.lograge.custom_options = lambda do |event|

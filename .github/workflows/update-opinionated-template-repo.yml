@@ -80,15 +80,16 @@ jobs:
         bundle add rubocop --group "development, test"
         bundle add rubocop-rails --group "development, test"
 
-        echo "Running Rubocop over everything"
-        bundle exec rubocop -a --auto-gen-config
-
         echo "Removing comments in Gemfile"
         sed -i '/^[[:blank:]]*#/d' Gemfile
 
-        echo "Sorting the gemfile"
+        echo "Sorting the Gemfile"
         gem install ordinare
         ordinare
+
+        echo "Running Rubocop over everything"
+        bundle exec rubocop -A --auto-gen-config
+
         bundle
     - name: Pull docker image
       run: |

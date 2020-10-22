@@ -10,3 +10,10 @@ AllCops:
     - '.git/**/*'
     - 'bin/*'
     - 'tmp/**/*'
+
+Bundler/OrderedGems:
+  Include:
+    - 'Gemfile'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
