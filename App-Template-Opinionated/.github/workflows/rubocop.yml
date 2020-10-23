@@ -1,5 +1,4 @@
-# https://github.com/testdouble/standard
-name: Standard RB
+name: RuboCop
 
 on:
   push:
@@ -8,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  standardrb:
+  rubocop:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,12 +20,13 @@ jobs:
       uses: actions/cache@v2.1.2
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-standard-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-rubocop-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}-standard-
+          ${{ runner.os }}-rubocop-
     - name: Install gem
       run: |
         bundle config path vendor/bundle
-        gem install standard
-    - name: Run Standard
-      run: standardrb
+        gem install rubocop-rails
+        gem install rubocop
+    - name: Run RuboCop
+      run: rubocop
