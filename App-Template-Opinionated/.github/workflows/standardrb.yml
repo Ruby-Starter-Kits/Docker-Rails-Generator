@@ -29,4 +29,4 @@ jobs:
         bundle config path vendor/bundle
         gem install standard
     - name: Run Standard
-      run: standard
+      run: standardrb
