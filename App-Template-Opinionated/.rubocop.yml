@@ -16,3 +16,6 @@ Bundler/OrderedGems:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
