@@ -1,0 +1,32 @@
+# https://github.com/testdouble/standard
+name: Standard RB
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+    - name: Cache gems
+      uses: actions/cache@v2.1.1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-standard-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-standard-
+    - name: Install gem
+      run: |
+        bundle config path vendor/bundle
+        gem install standard
+    - name: Run Standard
+      run: standard

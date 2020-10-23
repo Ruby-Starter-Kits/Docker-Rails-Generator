@@ -76,9 +76,8 @@ jobs:
         bundle add image_processing
         bundle remove jbuilder
 
-        echo "Installing Rubocop"
-        bundle add rubocop --group "development, test"
-        bundle add rubocop-rails --group "development, test"
+        echo "Installing Standard"
+        bundle add standard --group "development, test"
 
         echo "Removing comments in Gemfile"
         sed -i '/^[[:blank:]]*#/d' Gemfile
@@ -86,11 +85,10 @@ jobs:
         echo "Sorting the Gemfile"
         gem install ordinare
         ordinare
+        bundle
 
         echo "Running Rubocop over everything"
-        bundle exec rubocop -A --auto-gen-config
-
-        bundle
+        bundle exec standard --fix --generate-todo
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
