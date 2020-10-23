@@ -80,6 +80,17 @@ jobs:
         bundle add rubocop --group "development"
         bundle add rubocop-rails --group "development"
 
+        echo "Installing Letter Opener web"
+        bundle add letter_opener --group "development"
+        bundle add letter_opener_web --group "development"
+
+        echo "Installing Lograge"
+        bundle add lograge
+
+        echo "Installing Sidekiq"
+        bundle add sidekiq
+        bundle add sidekiq-cron
+
         echo "Removing comments in Gemfile"
         sed -i '/^[[:blank:]]*#/d' Gemfile
 
