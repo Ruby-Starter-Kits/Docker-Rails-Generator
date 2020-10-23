@@ -6,7 +6,7 @@ if defined?(Lograge)
     config.lograge.enabled = true
     config.lograge.custom_options = lambda do |event|
       # No params? Must be ActionCable.
-      return {} unless event.payload[:params].present?
+      return {} if event.payload[:params].blank?
 
       exceptions = %w[controller action format authenticity_token]
 
@@ -19,7 +19,7 @@ if defined?(Lograge)
       {
         host: controller.request.host,
         remote_ip: controller.request.remote_ip,
-        api_key: controller.request.headers.env["HTTP_X_APIKEY"]
+        api_key: controller.request.headers.env['HTTP_X_APIKEY']
       }
     end
   end
