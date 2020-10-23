@@ -87,7 +87,7 @@ jobs:
         ordinare
         bundle
 
-        echo "Running Rubocop over everything"
+        echo "Running standardrb over everything"
         bundle exec standardrb --fix --generate-todo
     - name: Pull docker image
       run: |
