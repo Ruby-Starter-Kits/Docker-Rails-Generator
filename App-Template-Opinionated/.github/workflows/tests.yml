@@ -18,10 +18,10 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.8
       - name: Build Latest
         run: |
-          docker-compose -f docker-compose.ci.yml build
+          docker-compose -f docker-compose.yml -f docker-compose.ci.yml build test
       - name: Run tests
         env:
           RAILS_ENV: test
         run: |
-          docker-compose -f docker-compose.ci.yml run --rm test
+          docker-compose -f docker-compose.yml -f docker-compose.ci.yml run --rm test
 
