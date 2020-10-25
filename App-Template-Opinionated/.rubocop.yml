@@ -4,7 +4,7 @@ AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
   Exclude:
-    - db/schema.rb
+    - 'db/schema.rb'
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - '.git/**/*'

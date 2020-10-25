@@ -15,9 +15,10 @@ if defined?(Sidekiq) && ENV['REDIS_URL'].present?
   if Sidekiq.server? && defined?(Sidekiq::Cron)
     Rails.application.config.after_initialize do
       schedule_file = Rails.root.join('config', 'schedule.yml')
+      schedule_file_yaml = YAML.load_file(schedule_file) if schedule_file.exist?
 
       # Use https://crontab.guru to confirm times
-      Sidekiq::Cron::Job.load_from_hash YAML.load_file(schedule_file) if schedule_file.exist?
+      Sidekiq::Cron::Job.load_from_hash(schedule_file_yaml) if schedule_file_yaml
     end
   end
 

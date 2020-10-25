@@ -63,7 +63,6 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template/ $GITHUB_WORKSPACE/App/
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template-Opinionated/ $GITHUB_WORKSPACE/App/
-        cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
     - name: Install Libraries I Often Use
       run: |
         cd $GITHUB_WORKSPACE/App
