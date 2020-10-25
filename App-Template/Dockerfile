@@ -16,8 +16,18 @@ RUN apk add --no-cache \
 
 FROM builder as development
 
+# Create a non-root user
+# Otherwise folders like node_modules are owned by root.
+ARG USER_ID=${USER_ID:-1000}
+ARG GROUP_ID=${GROUP_ID:-1000}
+ARG DOCKER_USER=${DOCKER_USER:-user}
+
+RUN addgroup -g $GROUP_ID -S $GROUP_ID
+RUN adduser --disabled-password -G $GROUP_ID --uid $USER_ID -S $DOCKER_USER
+
 # Add the current apps files into docker image
 RUN mkdir -p /usr/src/app
+RUN chown -R $USER_ID:$GROUP_ID /usr/src/app
 WORKDIR /usr/src/app
 
 # Install any extra dependencies via Aptfile - These are installed on Heroku
@@ -31,6 +41,9 @@ RUN bundle config --global silence_root_warning 1
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+
+# Define the user running the container
+USER $USER_ID:$GROUP_ID
 
 FROM development AS shared-production
 
