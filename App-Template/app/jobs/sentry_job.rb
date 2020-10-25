@@ -1,4 +1,4 @@
-class SentryJob < ActiveJob::Base
+class SentryJob < ApplicationJob
   queue_as :sentry
 
   def perform(event)
