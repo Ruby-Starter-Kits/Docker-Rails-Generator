@@ -58,11 +58,61 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
         rm $GITHUB_WORKSPACE/App/config/master.key
-    - name: Copy docker files
+    - name: Copy Docker Files
       run: |
         cd $GITHUB_WORKSPACE/App
         rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template/ $GITHUB_WORKSPACE/App/
-        cp $GITHUB_WORKSPACE/App/.env.sample $GITHUB_WORKSPACE/App/.env
+    - name: Install Libraries I Often Use
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        echo "Installing RSpec"
+        rm -rf test
+        bundle add rspec-rails --group "development, test"
+        rails generate rspec:install
+
+        echo "Installing Redis"
+        bundle add redis
+
+        echo "Installing image_processing"
+        bundle add image_processing
+        
+        echo "Removing jbuilder"
+        bundle remove jbuilder
+
+        echo "Installing dotenv-rails"
+        bundle add dotenv-rails --group "development, test"
+
+        echo "Installing rubocop"
+        bundle add rubocop --group "development"
+        bundle add rubocop-rails --group "development"
+
+        echo "Installing Letter Opener web"
+        bundle add letter_opener --group "development"
+        bundle add letter_opener_web --group "development"
+
+        echo "Installing Lograge"
+        bundle add lograge
+
+        echo "Installing Sentry"
+        bundle add sentry-raven
+
+        echo "Installing Barnes"
+        bundle add barnes
+
+        echo "Installing Sidekiq"
+        bundle add sidekiq
+        bundle add sidekiq-cron
+
+        echo "Removing comments in Gemfile"
+        sed -i '/^[[:blank:]]*#/d' Gemfile
+
+        echo "Sorting the Gemfile"
+        gem install ordinare
+        ordinare
+        bundle
+
+        echo "Running RuboCop over everything"
+        bundle exec rubocop -A --auto-gen-config
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
@@ -75,7 +125,7 @@ jobs:
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
-        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.1.0"
+        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.4.0"
         RAILS_VERSION=`rails -v`
 
         git config --local user.email "github-actions@example.com"
