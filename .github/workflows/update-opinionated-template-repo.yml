@@ -87,6 +87,12 @@ jobs:
         echo "Installing Lograge"
         bundle add lograge
 
+        echo "Installing Sentry"
+        bundle add sentry-raven
+
+        echo "Installing Barnes"
+        bundle add barnes
+
         echo "Installing Sidekiq"
         bundle add sidekiq
         bundle add sidekiq-cron
