@@ -23,6 +23,7 @@
 - Include gitignore in template repo [\#18](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/18) ([MikeRogers0](https://github.com/MikeRogers0))
 - Switching to just generating a template repo [\#17](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/17) ([MikeRogers0](https://github.com/MikeRogers0))
 - Use organisation funding file [\#15](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/15) ([MikeRogers0](https://github.com/MikeRogers0))
+- Adding an Opinionated defaults to Rails template [\#14](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/14) ([MikeRogers0](https://github.com/MikeRogers0))
 - Increase Postgres version to 12.3 [\#13](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/13) ([MikeRogers0](https://github.com/MikeRogers0))
 - bug: Don't try to copy now removed database.sample file [\#12](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/12) ([MikeRogers0](https://github.com/MikeRogers0))
 - Running Bundle & Yarn after creating app [\#10](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/10) ([MikeRogers0](https://github.com/MikeRogers0))
