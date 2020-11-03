@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Adding in default routes file which includes Sidekiq UI [\#29](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/29) ([MikeRogers0](https://github.com/MikeRogers0))
 - Matching Procfile's web command to heroku default [\#28](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/28) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adjusting GH Actions to work more reliably [\#27](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/27) ([MikeRogers0](https://github.com/MikeRogers0))
 - Fixing up a few rubocop warnings [\#25](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/25) ([MikeRogers0](https://github.com/MikeRogers0))
