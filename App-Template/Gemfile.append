@@ -7,7 +7,7 @@ end
 group :development do
   gem 'rubocop', '~> 1.1'
   gem 'rubocop-rails', '~> 2.8'
-  gem 'rubocop-rubocop', '~> 2.8'
+  gem 'rubocop-rspec', '~> 2.0'
   gem 'letter_opener', '~> 1.7'
   gem 'letter_opener_web', '~> 1.4'
 end
