@@ -26,5 +26,6 @@ jobs:
         bundle config path vendor/bundle
         gem install rubocop
         gem install rubocop-rails
+        gem install rubocop-rspec
     - name: Run RuboCop
       run: rubocop --parallel
