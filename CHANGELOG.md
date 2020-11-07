@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Removing unused ENVs from app.json [\#31](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/31) ([MikeRogers0](https://github.com/MikeRogers0))
 - Sorting gemfile with happy\_gemfile [\#30](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/30) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding in default routes file which includes Sidekiq UI [\#29](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/29) ([MikeRogers0](https://github.com/MikeRogers0))
 - Matching Procfile's web command to heroku default [\#28](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/28) ([MikeRogers0](https://github.com/MikeRogers0))
