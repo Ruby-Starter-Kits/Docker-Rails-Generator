@@ -82,6 +82,7 @@ jobs:
         gem install happy_gemfile
         happy_gemfile all
         bundle
+        bundle exec rubocop Gemfile -A
 
         echo "Running RuboCop over everything"
         bundle exec rubocop -A --auto-gen-config
