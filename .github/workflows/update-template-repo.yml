@@ -53,11 +53,13 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         rails new . --database=postgresql --skip-spring
-    - name: Remove files which can cause annoyances with Docker
+    - name: Remove default Rails files I often remove pretty fast.
       run: |
         cd $GITHUB_WORKSPACE/App
         rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
         rm $GITHUB_WORKSPACE/App/config/master.key
+
+        rm $GITHUB_WORKSPACE/App/app/views/layouts/mailer.text.erb
     - name: Copy Docker Files
       run: |
         cd $GITHUB_WORKSPACE/App
