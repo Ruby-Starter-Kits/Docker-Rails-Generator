@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Simplifying rubocop setup a bit more [\#35](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/35) ([MikeRogers0](https://github.com/MikeRogers0))
 - Updating to Ruby 2.7.2 [\#34](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/34) ([MikeRogers0](https://github.com/MikeRogers0))
 - Caching Gems & node\_modules between tests - it's so much faster [\#33](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/33) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding premailer-rails to the default stack [\#32](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/32) ([MikeRogers0](https://github.com/MikeRogers0))
