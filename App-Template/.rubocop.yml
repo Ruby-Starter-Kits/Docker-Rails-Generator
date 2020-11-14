@@ -4,7 +4,7 @@ require:
 
 AllCops:
   TargetRubyVersion: 2.7
-  NewCops: enable
+  NewCops: disable
   Exclude:
     - 'db/schema.rb'
     - 'node_modules/**/*'
@@ -13,11 +13,5 @@ AllCops:
     - 'bin/*'
     - 'tmp/**/*'
 
-Bundler/OrderedGems:
-  Enabled: true
-
 Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/HashSyntax:
   Enabled: false
