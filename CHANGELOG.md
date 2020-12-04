@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Allowing .envs to store DATABASE\_URL/REDIS\_URL [\#38](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/38) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding rubocop-performance [\#37](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/37) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding Code Of Conduct [\#36](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/36) ([MikeRogers0](https://github.com/MikeRogers0))
 - Simplifying rubocop setup a bit more [\#35](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/35) ([MikeRogers0](https://github.com/MikeRogers0))
