@@ -71,6 +71,10 @@ jobs:
         bundle remove jbuilder
         bundle remove web-console
 
+        echo "Updating .gitignore to ignore .env files"
+        cat .gitignore.append >> .gitignore
+        rm .gitignore.append
+
         echo "Adding gems I often add next"
         cat Gemfile.append >> Gemfile
         rm Gemfile.append
