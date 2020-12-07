@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Bump satackey/action-docker-layer-caching from v0.0.8 to v0.0.10 [\#40](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/40) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Adding rubocop-performance to default workflows [\#39](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/39) ([MikeRogers0](https://github.com/MikeRogers0))
 - Allowing .envs to store DATABASE\_URL/REDIS\_URL [\#38](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/38) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding rubocop-performance [\#37](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/37) ([MikeRogers0](https://github.com/MikeRogers0))
