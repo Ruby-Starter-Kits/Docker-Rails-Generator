@@ -3,7 +3,7 @@ name: Update Template Repo
 on:
   push:
     branches:
-      - master
+      #- master
   schedule:
     - cron:  '0 5 1 * *'
 
@@ -27,7 +27,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7.2
-        bundler: 2.1.4
+        bundler: none
     - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/vendor/bundle
