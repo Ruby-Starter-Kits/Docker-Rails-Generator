@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Adding Bootsnap precompile to Dockerfile [\#44](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/44) ([MikeRogers0](https://github.com/MikeRogers0))
 - Telling ruby/setup-ruby to not install a different version of bundler [\#43](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/43) ([MikeRogers0](https://github.com/MikeRogers0))
 - Retagging satackey/action-docker-layer-caching to v0 [\#42](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/42) ([MikeRogers0](https://github.com/MikeRogers0))
 - Bump satackey/action-docker-layer-caching from v0.0.8 to v0.0.10 [\#40](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/40) ([dependabot[bot]](https://github.com/apps/dependabot))
