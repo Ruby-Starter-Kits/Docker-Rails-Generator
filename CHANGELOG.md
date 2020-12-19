@@ -14,6 +14,7 @@
 
 **Merged pull requests:**
 
+- Adding factory\_bot [\#47](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/47) ([MikeRogers0](https://github.com/MikeRogers0))
 - Tidying up env & generators file [\#46](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/46) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding /letter\_opener link to routes [\#45](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/45) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding Bootsnap precompile to Dockerfile [\#44](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/44) ([MikeRogers0](https://github.com/MikeRogers0))
