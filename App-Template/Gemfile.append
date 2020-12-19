@@ -9,6 +9,7 @@ gem 'premailer-rails', '~> 1.11'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7'
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0'
 end
 

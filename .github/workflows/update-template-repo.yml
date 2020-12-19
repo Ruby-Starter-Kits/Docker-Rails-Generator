@@ -83,7 +83,6 @@ jobs:
 
         echo "Installing RSpec"
         rm -rf test
-        rails generate rspec:install
 
         echo "Sorting the Gemfile"
         gem install happy_gemfile
