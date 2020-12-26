@@ -26,14 +26,15 @@ jobs:
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7.1
-    - uses: actions/cache@v1.1.2
+        ruby-version: 2.7.2
+        bundler: none
+    - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gem-
-    - uses: actions/cache@v1.1.2
+    - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/App/node_modules
         key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
@@ -53,11 +54,13 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         rails new . --database=postgresql --skip-spring
-    - name: Remove files which can cause annoyances with Docker
+    - name: Remove default Rails files I often remove pretty fast.
       run: |
         cd $GITHUB_WORKSPACE/App
         rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
         rm $GITHUB_WORKSPACE/App/config/master.key
+
+        rm $GITHUB_WORKSPACE/App/app/views/layouts/mailer.text.erb
     - name: Copy Docker Files
       run: |
         cd $GITHUB_WORKSPACE/App
@@ -65,51 +68,27 @@ jobs:
     - name: Install Libraries I Often Use
       run: |
         cd $GITHUB_WORKSPACE/App
+        echo "Remove gems I'm not a fan of"
+        bundle remove jbuilder
+        bundle remove web-console
+
+        echo "Updating .gitignore to ignore .env files"
+        cat .gitignore.append >> .gitignore
+        rm .gitignore.append
+
+        echo "Adding gems I often add next"
+        cat Gemfile.append >> Gemfile
+        rm Gemfile.append
+        bundle
+
         echo "Installing RSpec"
         rm -rf test
-        bundle add rspec-rails --group "development, test"
-        rails generate rspec:install
-
-        echo "Installing Redis"
-        bundle add redis
-
-        echo "Installing image_processing"
-        bundle add image_processing
-        
-        echo "Removing jbuilder"
-        bundle remove jbuilder
-
-        echo "Installing dotenv-rails"
-        bundle add dotenv-rails --group "development, test"
-
-        echo "Installing rubocop"
-        bundle add rubocop --group "development"
-        bundle add rubocop-rails --group "development"
-
-        echo "Installing Letter Opener web"
-        bundle add letter_opener --group "development"
-        bundle add letter_opener_web --group "development"
-
-        echo "Installing Lograge"
-        bundle add lograge
-
-        echo "Installing Sentry"
-        bundle add sentry-raven
-
-        echo "Installing Barnes"
-        bundle add barnes
-
-        echo "Installing Sidekiq"
-        bundle add sidekiq
-        bundle add sidekiq-cron
-
-        echo "Removing comments in Gemfile"
-        sed -i '/^[[:blank:]]*#/d' Gemfile
 
         echo "Sorting the Gemfile"
-        gem install ordinare
-        ordinare
+        gem install happy_gemfile
+        happy_gemfile all
         bundle
+        bundle exec rubocop Gemfile -A
 
         echo "Running RuboCop over everything"
         bundle exec rubocop -A --auto-gen-config
@@ -117,7 +96,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         docker-compose pull
-    - uses: satackey/action-docker-layer-caching@v0.0.8
+    - uses: satackey/action-docker-layer-caching@v0
     - name: Test we can build docker
       run: |
         cd $GITHUB_WORKSPACE/App

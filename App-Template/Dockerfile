@@ -1,4 +1,4 @@
-FROM ruby:2.7.1-alpine AS builder
+FROM ruby:2.7.2-alpine AS builder
 
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
 
@@ -14,7 +14,7 @@ RUN apk add --no-cache \
     # Fixes watch file issues with things like HMR
     libnotify-dev
 
-FROM builder as development
+FROM builder AS development
 
 # Create a non-root user
 # Otherwise folders like node_modules are owned by root.
@@ -45,7 +45,7 @@ CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
 # Define the user running the container
 USER $USER_ID:$GROUP_ID
 
-FROM development AS shared-production
+FROM development AS production
 
 COPY Gemfile /usr/src/app
 COPY .ruby-version /usr/src/app
@@ -53,21 +53,6 @@ COPY Gemfile.lock /usr/src/app
 
 COPY package.json /usr/src/app
 COPY yarn.lock /usr/src/app
-
-FROM shared-production AS ci
-
-# Install Ruby Gems
-RUN bundle check || bundle install --jobs=$(nproc)
-
-# Install Yarn Libraries
-RUN yarn install --check-files
-
-# Copy the rest of the app
-COPY . /usr/src/app
-
-CMD ["bundle", "exec", "rspec"]
-
-FROM shared-production AS production
 
 # Install Ruby Gems
 RUN bundle config set deployment 'true'
@@ -80,5 +65,8 @@ RUN yarn install --check-files
 # Copy the rest of the app
 COPY . /usr/src/app
 
-# Compile the assets
+# Precompile the assets
 RUN RAILS_SERVE_STATIC_FILES=enabled SECRET_KEY_BASE=secret-key-base RAILS_ENV=production RACK_ENV=production NODE_ENV=production bundle exec rake assets:precompile
+
+# Precompile Bootsnap
+run RAILS_SERVE_STATIC_FILES=enabled SECRET_KEY_BASE=secret-key-base RAILS_ENV=production RACK_ENV=production NODE_ENV=production bundle exec bootsnap precompile --gemfile app/ lib/

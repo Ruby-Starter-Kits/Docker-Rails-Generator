@@ -1,0 +1,3 @@
+
+# Ignore .envs - They store environmental variables
+.env
