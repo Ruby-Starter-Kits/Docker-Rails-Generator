@@ -12,6 +12,7 @@ x-app: &app
     target: development
   tmpfs:
     - /tmp
+  user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
   environment:
     RAILS_LOG_TO_STDOUT: enabled
     REDIS_URL: redis://@redis:6379/1

@@ -2,12 +2,20 @@ FROM ruby:2.7.2-alpine AS builder
 
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
 
-RUN apk add --no-cache \
+RUN apk add --no-cache --virtual \
     #
-    # required
+    # Required
+    ruby-dev \
     build-base libffi-dev \
     nodejs yarn tzdata \
-    postgresql-dev zlib-dev libxml2-dev libxslt-dev readline-dev bash \
+    postgresql-dev \
+    #
+    # Allow Nokogiri & other Ruby Gems to be installed
+    zlib-dev libxml2-dev libxslt-dev readline-dev bash \
+    ca-certificates openssl unzip \
+    #
+    # Image Resizing
+    imagemagick vips \
     # Nice to haves
     git vim \
     #
@@ -21,13 +29,22 @@ FROM builder AS development
 ARG USER_ID=${USER_ID:-1000}
 ARG GROUP_ID=${GROUP_ID:-1000}
 ARG DOCKER_USER=${DOCKER_USER:-user}
+ARG BOOTSNAP_CACHE_DIR=${BOOTSNAP_CACHE_DIR:-/usr/src/bootsnap}
 
 RUN addgroup -g $GROUP_ID -S $GROUP_ID
 RUN adduser --disabled-password -G $GROUP_ID --uid $USER_ID -S $DOCKER_USER
 
-# Add the current apps files into docker image
+# Add the apps directory, as the current docker user
 RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/node_modules
+RUN mkdir -p /usr/src/app/tmp/cache
+RUN mkdir -p /usr/src/app/storage
+RUN mkdir -p $BOOTSNAP_CACHE_DIR
 RUN chown -R $USER_ID:$GROUP_ID /usr/src/app
+RUN chown -R $USER_ID:$GROUP_ID /usr/src/app/node_modules
+RUN chown -R $USER_ID:$GROUP_ID /usr/src/app/storage
+RUN chown -R $USER_ID:$GROUP_ID /usr/src/app/tmp/cache
+RUN chown -R $USER_ID:$GROUP_ID $BOOTSNAP_CACHE_DIR
 WORKDIR /usr/src/app
 
 # Install any extra dependencies via Aptfile - These are installed on Heroku
