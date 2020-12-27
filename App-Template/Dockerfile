@@ -55,12 +55,12 @@ RUN mkdir -p /usr/src/app \
   && mkdir -p /usr/src/app/public \
   && mkdir -p /usr/src/app/storage \
   && mkdir -p $BOOTSNAP_CACHE_DIR \
-  && chown -R $USER_ID:$GROUP_ID /usr/src/app \
-  && chown -R $USER_ID:$GROUP_ID $BOOTSNAP_CACHE_DIR
+  && chown -R appuser:appgroup /usr/src/app \
+  && chown -R appuser:appgroup $BOOTSNAP_CACHE_DIR
 WORKDIR /usr/src/app
 
 # Define the user running the container
-USER $USER_ID
+USER 1000
 
 ENV PATH /usr/src/app/bin:$PATH
 
