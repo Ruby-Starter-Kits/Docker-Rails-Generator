@@ -23,14 +23,14 @@ jobs:
       with:
         ruby-version: 2.7.2
         bundler: none
-    #- uses: actions/cache@v2
-      #with:
-        #path: ${{ github.workspace }}/vendor/bundle
-        #key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-    #- uses: actions/cache@v2
-      #with:
-        #path: ${{ github.workspace }}/App/node_modules
-        #key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
+    - uses: actions/cache@v2
+      with:
+        path: ${{ github.workspace }}/vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+    - uses: actions/cache@v2
+      with:
+        path: ${{ github.workspace }}/App/node_modules
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
     - name: Build latest version of app
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
