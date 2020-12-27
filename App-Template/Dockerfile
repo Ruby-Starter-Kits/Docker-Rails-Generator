@@ -42,31 +42,25 @@ RUN apk --no-cache add \
 FROM builder AS development
 
 # Set common ENVs
-ARG USER_ID=${USER_ID:-1000}
-ARG GROUP_ID=${GROUP_ID:-1000}
-ARG DOCKER_USER=${DOCKER_USER:-appuser}
 ARG BOOTSNAP_CACHE_DIR=${BOOTSNAP_CACHE_DIR:-/usr/src/bootsnap}
 
 # Add non-root user and group with alpine first available uid, 1000
-RUN addgroup -g $GROUP_ID -S $GROUP_ID \
-  && adduser --disabled-password -G $GROUP_ID --uid $USER_ID -S $DOCKER_USER
+RUN addgroup -g 1000 -S appgroup \
+      && adduser -u 1000 -S appuser -G appgroup
 
 # Create app directory in conventional, existing dir /usr/src
 RUN mkdir -p /usr/src/app \
   && mkdir -p /usr/src/app/node_modules \
-  && mkdir -p /usr/src/app/tmp/cache \
-  && mkdir -p /usr/src/app/public/assets \
-  && mkdir -p /usr/src/app/public/packs \
-  && mkdir -p /usr/src/app/public/packs-test \
+  && mkdir -p /usr/src/app/tmp \
+  && mkdir -p /usr/src/app/public \
   && mkdir -p /usr/src/app/storage \
-  && mkdir -p /usr/src/app/vendor/bundle \
   && mkdir -p $BOOTSNAP_CACHE_DIR \
   && chown -R $USER_ID:$GROUP_ID /usr/src/app \
   && chown -R $USER_ID:$GROUP_ID $BOOTSNAP_CACHE_DIR
 WORKDIR /usr/src/app
 
 # Define the user running the container
-USER $DOCKER_USER
+USER $USER_ID
 
 ENV PATH /usr/src/app/bin:$PATH
 
@@ -74,6 +68,9 @@ EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
 
 FROM development AS production
+ENV RAILS_ENV production
+ENV RACK_ENV production
+ENV NODE_ENV production
 
 COPY Gemfile /usr/src/app
 COPY .ruby-version /usr/src/app
@@ -90,14 +87,8 @@ COPY yarn.lock /usr/src/app
 # Install Yarn Libraries
 RUN yarn install --check-files
 
-# Copy the rest of the app
-COPY --chown=$DOCKER_USER . /usr/src/app
-
 # Precompile the assets & Bootsnap
 RUN RAILS_SERVE_STATIC_FILES=enabled \
       SECRET_KEY_BASE=secret-key-base \
-      RAILS_ENV=production \
-      RACK_ENV=production \
-      NODE_ENV=production \
       bundle exec rake assets:precompile \
       && bundle exec bootsnap precompile --gemfile app/ lib/

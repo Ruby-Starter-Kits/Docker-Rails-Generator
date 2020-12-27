@@ -12,13 +12,12 @@ x-app: &app
     target: development
   tmpfs:
     - /tmp
-  user: "${USER_ID:-1000}"
+  user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
   environment:
     RAILS_LOG_TO_STDOUT: enabled
     REDIS_URL: redis://@redis:6379/1
     DATABASE_URL: postgres://postgres:postgres@postgres:5432/
     WEBPACKER_DEV_SERVER_HOST: webpacker
-    BOOTSNAP_CACHE_DIR: /usr/src/bootsnap
     HISTFILE: /usr/src/app/log/.bash_history
     PSQL_HISTFILE: /usr/src/app/log/.psql_history
   volumes:
