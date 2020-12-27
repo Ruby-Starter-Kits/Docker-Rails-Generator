@@ -57,7 +57,9 @@ RUN mkdir -p /usr/src/app \
   && mkdir -p /usr/src/app/tmp/cache \
   && mkdir -p /usr/src/app/public/assets \
   && mkdir -p /usr/src/app/public/packs \
+  && mkdir -p /usr/src/app/public/packs-test \
   && mkdir -p /usr/src/app/storage \
+  && mkdir -p /usr/src/app/vendor/bundle \
   && mkdir -p $BOOTSNAP_CACHE_DIR \
   && chown -R $USER_ID:$GROUP_ID /usr/src/app \
   && chown -R $USER_ID:$GROUP_ID $BOOTSNAP_CACHE_DIR
