@@ -43,7 +43,7 @@ jobs:
     - uses: satackey/action-docker-layer-caching@v0
       with:
         key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
-    - name: Test we can build the docker image & the test still pass
+    - name: Do the test still pass in our new template?
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
         ./bin/test-latest-version
