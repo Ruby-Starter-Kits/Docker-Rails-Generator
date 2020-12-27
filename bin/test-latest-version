@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Building Latest Version"
+  cd $GITHUB_WORKSPACE/App
+  docker-compose build
+  docker-compose -f docker-compose.ci.yml build test 
+  docker-compose -f docker-compose.ci.yml run --rm test
+  docker image prune -f
+  docker volume prune -f
