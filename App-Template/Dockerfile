@@ -45,8 +45,8 @@ FROM builder AS development
 ARG BOOTSNAP_CACHE_DIR=${BOOTSNAP_CACHE_DIR:-/usr/src/bootsnap}
 
 # Add non-root user and group with alpine first available uid, 1000
-RUN addgroup -g 1000 -S appgroup \
-      && adduser -u 1000 -S appuser -G appgroup
+#RUN addgroup -g 1000 -S appgroup \
+      #&& adduser -u 1000 -S appuser -G appgroup
 
 # Create app directory in conventional, existing dir /usr/src
 RUN mkdir -p /usr/src/app \
@@ -62,7 +62,7 @@ RUN mkdir -p /usr/src/app \
 WORKDIR /usr/src/app
 
 # Define the user running the container
-USER appuser
+#USER appuser
 
 ENV PATH /usr/src/app/bin:$PATH
 

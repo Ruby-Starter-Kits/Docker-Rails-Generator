@@ -19,7 +19,7 @@ x-ci-app: &ci-app
     - ./node_modules:/usr/src/app/node_modules:cached
     - ./public/assets:/usr/src/app/public/assets:cached
     - ./public/packs-test:/usr/src/app/public/packs-test:cached
-    #- ./vendor/bundle:/usr/local/bundle:cached
+    - ./vendor/bundle:/usr/local/bundle:cached
   depends_on:
     postgres:
       condition: service_healthy

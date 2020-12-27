@@ -40,7 +40,9 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         docker pull ruby:2.7.2-alpine
         docker-compose pull
-    #- uses: satackey/action-docker-layer-caching@v0
+    - uses: satackey/action-docker-layer-caching@v0
+      with:
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
     - name: Test we can build the docker image & the test still pass
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
