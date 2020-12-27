@@ -62,7 +62,7 @@ RUN mkdir -p /usr/src/app \
 WORKDIR /usr/src/app
 
 # Define the user running the container
-USER 1000:1000
+USER appuser
 
 ENV PATH /usr/src/app/bin:$PATH
 
