@@ -49,16 +49,16 @@ ARG BOOTSNAP_CACHE_DIR=${BOOTSNAP_CACHE_DIR:-/usr/src/bootsnap}
       #&& adduser -u 1000 -S appuser -G appgroup
 
 # Create app directory in conventional, existing dir /usr/src
-RUN mkdir -p /usr/src/app \
-  && mkdir -p /usr/src/app/node_modules \
-  && mkdir -p /usr/src/app/tmp \
-  && mkdir -p /usr/src/app/public \
-  && mkdir -p /usr/src/app/storage \
-  && mkdir -p $BOOTSNAP_CACHE_DIR \
-  && mkdir -p /usr/local/bundle \
-  && chown -R appuser:appgroup /usr/src/app \
-  && chown -R appuser:appgroup /usr/local/bundle \
-  && chown -R appuser:appgroup $BOOTSNAP_CACHE_DIR
+RUN mkdir -p /usr/src/app
+  #&& mkdir -p /usr/src/app/node_modules \
+  #&& mkdir -p /usr/src/app/tmp \
+  #&& mkdir -p /usr/src/app/public \
+  #&& mkdir -p /usr/src/app/storage \
+  #&& mkdir -p $BOOTSNAP_CACHE_DIR \
+  #&& mkdir -p /usr/local/bundle \
+  #&& chown -R appuser:appgroup /usr/src/app \
+  #&& chown -R appuser:appgroup /usr/local/bundle \
+  #&& chown -R appuser:appgroup $BOOTSNAP_CACHE_DIR
 WORKDIR /usr/src/app
 
 # Define the user running the container
