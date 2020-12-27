@@ -10,6 +10,7 @@ x-app: &app
     context: .
     dockerfile: Dockerfile
     target: development
+  user: "1000:1000"
   tmpfs:
     - /tmp
   environment:
