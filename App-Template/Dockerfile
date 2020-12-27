@@ -64,12 +64,12 @@ USER $USER_ID:$GROUP_ID
 
 FROM development AS production
 
-COPY Gemfile /usr/src/app
-COPY .ruby-version /usr/src/app
-COPY Gemfile.lock /usr/src/app
+COPY --chown=$USER_ID:$GROUP_ID Gemfile /usr/src/app
+COPY --chown=$USER_ID:$GROUP_ID .ruby-version /usr/src/app
+COPY --chown=$USER_ID:$GROUP_ID Gemfile.lock /usr/src/app
 
-COPY package.json /usr/src/app
-COPY yarn.lock /usr/src/app
+COPY --chown=$USER_ID:$GROUP_ID package.json /usr/src/app
+COPY --chown=$USER_ID:$GROUP_ID yarn.lock /usr/src/app
 
 # Install Ruby Gems
 RUN bundle config set deployment 'true'
@@ -80,7 +80,7 @@ RUN bundle check || bundle install --jobs=$(nproc)
 RUN yarn install --check-files
 
 # Copy the rest of the app
-COPY . /usr/src/app
+COPY --chown=$USER_ID:$GROUP_ID . /usr/src/app
 
 # Precompile the assets
 RUN RAILS_SERVE_STATIC_FILES=enabled SECRET_KEY_BASE=secret-key-base RAILS_ENV=production RACK_ENV=production NODE_ENV=production bundle exec rake assets:precompile
