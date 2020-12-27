@@ -10,6 +10,10 @@ echo "Clear previous build"
   shopt -s extglob
   rm -rfv !(".git"|"."|".."|"node_modules")
 
+echo "Build latest version of rails"
+  cd $GITHUB_WORKSPACE/App
+  rails new . --database=postgresql --skip-spring
+
 echo "Remove default Rails files I often remove pretty fast."
   cd $GITHUB_WORKSPACE/App
   rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
