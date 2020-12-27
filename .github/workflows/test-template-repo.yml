@@ -23,14 +23,14 @@ jobs:
       with:
         ruby-version: 2.7.2
         bundler: none
-    - uses: actions/cache@v2
-      with:
-        path: ${{ github.workspace }}/vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-    - uses: actions/cache@v2
-      with:
-        path: ${{ github.workspace }}/App/node_modules
-        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
+    #- uses: actions/cache@v2
+      #with:
+        #path: ${{ github.workspace }}/vendor/bundle
+        #key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+    #- uses: actions/cache@v2
+      #with:
+        #path: ${{ github.workspace }}/App/node_modules
+        #key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
     - name: Build latest version of app
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
@@ -40,7 +40,7 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         docker pull ruby:2.7.2-alpine
         docker-compose pull
-    - uses: satackey/action-docker-layer-caching@v0
+    #- uses: satackey/action-docker-layer-caching@v0
     - name: Test we can build the docker image & the test still pass
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
