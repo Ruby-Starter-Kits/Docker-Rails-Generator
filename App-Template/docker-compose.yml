@@ -18,6 +18,7 @@ x-app: &app
     REDIS_URL: redis://@redis:6379/1
     DATABASE_URL: postgres://postgres:postgres@postgres:5432/
     WEBPACKER_DEV_SERVER_HOST: webpacker
+    BOOTSNAP_CACHE_DIR: /usr/src/bootsnap
     HISTFILE: /usr/src/app/log/.bash_history
     PSQL_HISTFILE: /usr/src/app/log/.psql_history
   volumes:
@@ -25,7 +26,9 @@ x-app: &app
     - bundler:/usr/local/bundle:delegated
     - bootsnap_cache:/usr/src/bootsnap:delegated
     - rails_cache:/usr/src/app/tmp/cache:delegated
+    - packs:/usr/src/app/public/packs:delegated
     - node_modules:/usr/src/app/node_modules:delegated
+    - storage:/usr/src/app/storage:delegated
   depends_on:
     postgres:
       condition: service_healthy
@@ -90,4 +93,6 @@ volumes:
   bundler:
   bootsnap_cache:
   rails_cache:
+  packs:
   node_modules:
+  storage:
