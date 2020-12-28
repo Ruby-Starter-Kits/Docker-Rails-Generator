@@ -59,7 +59,8 @@ RUN mkdir -p /usr/src/app \
       && mkdir -p /usr/src/app/storage \
       && mkdir -p /usr/src/app/vendor/bundle \
       && mkdir -p $BUNDLE_PATH \
-      && mkdir -p /usr/local/bundle/config \
+      && mkdir -p $BUNDLE_PATH \
+      && touch $BUNDLE_PATH/config \
       && mkdir -p $BOOTSNAP_CACHE_DIR \
       && chown -R appuser:appgroup /usr/src/app \
       && chown -R appuser:appgroup $BUNDLE_PATH \

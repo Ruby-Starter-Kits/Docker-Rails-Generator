@@ -40,6 +40,9 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         docker pull ruby:2.7.2-alpine
         docker-compose pull
+    - uses: satackey/action-docker-layer-caching@v0
+      with:
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
     - name: Do the test still pass in our new template?
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
