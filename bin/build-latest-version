@@ -1,0 +1,52 @@
+#!/bin/bash
+
+echo "Setting up Environment"
+  cd $GITHUB_WORKSPACE/App
+  bundle config path $GITHUB_WORKSPACE/vendor/bundle
+  bundle config set jobs $(nproc)
+  gem install rails
+
+echo "Clear previous build"
+  cd $GITHUB_WORKSPACE/App
+  shopt -s extglob
+  rm -rfv !(".git"|"."|".."|"node_modules")
+
+echo "Create app with latest version of Rails"
+  cd $GITHUB_WORKSPACE/App
+  rails new . --database=postgresql --skip-spring
+
+echo "Remove default Rails files I often remove pretty fast"
+  cd $GITHUB_WORKSPACE/App
+  rm $GITHUB_WORKSPACE/App/config/credentials.yml.enc
+  rm $GITHUB_WORKSPACE/App/config/master.key
+  rm $GITHUB_WORKSPACE/App/app/views/layouts/mailer.text.erb
+
+echo "Copy Docker Template Files"
+  cd $GITHUB_WORKSPACE/App
+  rsync -a $GITHUB_WORKSPACE/Docker-Rails-Generator/App-Template/ $GITHUB_WORKSPACE/App/
+
+echo "Setup Libraries I Often Use & Remove stuff I don't use"
+  cd $GITHUB_WORKSPACE/App
+  bundle remove jbuilder
+  bundle remove web-console
+
+  echo "Remove Minitest (Use RSpec instead)"
+  rm -rf test
+
+  echo "Updating .gitignore to ignore .env files"
+  cat .gitignore.append >> .gitignore
+  rm .gitignore.append
+
+  echo "Adding gems I often add next"
+  cat Gemfile.append >> Gemfile
+  rm Gemfile.append
+  bundle
+
+  echo "Sorting the Gemfile"
+  gem install happy_gemfile
+  happy_gemfile all
+  bundle
+  bundle exec rubocop Gemfile -A
+
+  echo "Running RuboCop over everything"
+  bundle exec rubocop -A --auto-gen-config

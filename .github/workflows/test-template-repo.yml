@@ -1,17 +1,12 @@
-name: Update Template Repo
+name: Test New Template
 
 on:
-  push:
-    branches:
-      - master
-  schedule:
-    - cron:  '0 5 1 * *'
+  pull_request:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    if: "!contains(github.event.head_commit.message, '[nodoc]')"
     steps:
     - uses: actions/checkout@v2
       with:
@@ -46,23 +41,26 @@ jobs:
         docker pull ruby:2.7.2-alpine
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0
-    - name: Test we can build the docker image & the test still pass
+      with:
+        key: test-${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+    - name: Cache Assets
+      uses: actions/cache@v2
+      with:
+        path: |
+          $GITHUB_WORKSPACE/App/public/assets
+          $GITHUB_WORKSPACE/App/public/packs-test
+        key: test-${{ runner.os }}-assets-${{ hashFiles('**/yarn.lock') }}
+    - name: Cache gems
+      uses: actions/cache@v2
+      with:
+        path: |
+          $GITHUB_WORKSPACE/App/vendor/bundle
+        key: test-${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Do the test still pass in our new template?
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
         ./bin/test-latest-version
-    - name: Commit any new files
+    - name: What would we be committing?
       run: |
         cd $GITHUB_WORKSPACE/App
-        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.4.0"
-        RAILS_VERSION=`rails -v`
-
-        git config --local user.email "github-actions@example.com"
-        git config --local user.name "GitHub Actions"
-        git add .
-        git commit -am "$RAILS_VERSION | $DOCKER_RAILS_INSTALLER_VERSION" || echo "No changes to commit"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
-        repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
-        directory: App
+        git status
