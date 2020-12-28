@@ -42,6 +42,8 @@ FROM builder AS development
 
 # Set common ENVs
 ENV BOOTSNAP_CACHE_DIR /usr/src/bootsnap
+ENV EDITOR vim
+ENV LANG en_US.UTF-8
 
 # Add non-root user and group with alpine first available uid, 1000
 RUN addgroup -g 1000 -S appgroup \
@@ -54,8 +56,10 @@ RUN mkdir -p /usr/src/app \
       && mkdir -p /usr/src/app/public/packs-test \
       && mkdir -p /usr/src/app/tmp/cache \
       && mkdir -p /usr/src/app/storage \
+      && mkdir -p /usr/local/bundle \
       && mkdir -p $BOOTSNAP_CACHE_DIR \
       && chown -R appuser:appgroup /usr/src/app \
+      && chown -R appuser:appgroup /usr/local/bundle \
       && chown -R appuser:appgroup $BOOTSNAP_CACHE_DIR
 WORKDIR /usr/src/app
 
