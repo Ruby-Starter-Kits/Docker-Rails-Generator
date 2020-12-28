@@ -47,7 +47,6 @@ jobs:
       uses: actions/cache@v2
       with:
         path: |
-          $GITHUB_WORKSPACE/App/node_modules
           $GITHUB_WORKSPACE/App/public/assets
           $GITHUB_WORKSPACE/App/public/packs-test
         key: ${{ runner.os }}-assets-${{ hashFiles('**/yarn.lock') }}
