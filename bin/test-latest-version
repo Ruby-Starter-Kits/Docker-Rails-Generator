@@ -1,13 +1,13 @@
 #!/bin/bash
 
-echo "Building Latest Version"
+echo "Building Docker Image"
   cd $GITHUB_WORKSPACE/App
   docker-compose build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)"
   docker-compose -f docker-compose.ci.yml build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)" test || exit $?
 
-echo "Running Tests in local version"
+echo "Running Tests"
   docker-compose -f docker-compose.ci.yml run --rm --user="$(id -u):$(id -g)" test || exit $?
 
-echo "Cleaning up unused images"
+echo "Cleaning Up unused data"
   docker image prune -f
   docker volume prune -f

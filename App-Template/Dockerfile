@@ -7,9 +7,9 @@ RUN apk --no-cache add --virtual build-dependencies \
       zlib-dev \
       libxml2-dev \
       libxslt-dev \
-      # PG Gem
+      # PG
       postgresql-dev \
-      # JavaScript Requirements
+      # JavaScript
       yarn \
       # FFI Bindings in ruby (Run C Commands)
       libffi-dev
@@ -19,7 +19,7 @@ RUN apk --no-cache add \
       file \
       # Time zone data
       tzdata \
-      # JS Libraries
+      # JavaScript
       nodejs \
       # HTML to PDF conversion
       # ttf-ubuntu-font-family \
@@ -30,6 +30,7 @@ RUN apk --no-cache add \
       # Nice to have
       bash \
       git \
+      # VIM is a handy editor for editing credentials
       vim \
       # Fixes watch file issues with things like HMR
       libnotify-dev
@@ -45,8 +46,10 @@ ENV BOOTSNAP_CACHE_DIR /usr/src/bootsnap
 ENV EDITOR vim
 ENV LANG en_US.UTF-8
 ENV BUNDLE_PATH /usr/local/bundle
+ENV RAILS_LOG_TO_STDOUT enabled
+ENV HISTFILE /usr/src/app/log/.bash_history
 
-# Set build args. these let linux users not run into file permission problems
+# Set build args. These let linux users not run into file permission problems
 ARG USER_ID=${USER_ID:-1000}
 ARG GROUP_ID=${GROUP_ID:-1000}
 
@@ -57,7 +60,7 @@ RUN addgroup -g $USER_ID -S appgroup \
 # Install multiple gems at the same time
 RUN bundle config set jobs $(nproc)
 
-# Create app directory in conventional, existing dir /usr/src
+# Create app directory in the conventional /usr/src/app
 RUN mkdir -p /usr/src/app \
       && mkdir -p /usr/src/app/node_modules \
       && mkdir -p /usr/src/app/public/packs \
@@ -97,6 +100,7 @@ COPY yarn.lock /usr/src/app
 # Install Yarn Libraries
 RUN yarn install --check-files
 
+# Chown files so non are root.
 COPY --chown=appuser:appgroup . /usr/src/app
 
 # Precompile the assets & bootsnap

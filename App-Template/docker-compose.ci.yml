@@ -1,4 +1,11 @@
 ---
+# This is used to run the test suite within CI without requiring extra services.
+#
+## Usage:
+#
+# docker-compose -f docker-compose.ci.yml build test
+# docker-compose -f docker-compose.ci.yml run --rm test
+#
 # Docker Compose 2.4 is for local development
 # https://www.heroku.com/podcasts/codeish/57-discussing-docker-containers-and-kubernetes-with-a-docker-captain - Source on that.
 version: '2.4'
