@@ -43,6 +43,20 @@ jobs:
     - uses: satackey/action-docker-layer-caching@v0
       with:
         key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+      - name: Cache Assets
+        uses: actions/cache@v2
+        with:
+          path: |
+            $GITHUB_WORKSPACE/App/node_modules
+            $GITHUB_WORKSPACE/App/public/assets
+            $GITHUB_WORKSPACE/App/public/packs-test
+          key: ${{ runner.os }}-assets-${{ hashFiles('**/yarn.lock') }}
+      - name: Cache gems
+        uses: actions/cache@v2
+        with:
+          path: |
+            $GITHUB_WORKSPACE/App/vendor/bundle
+          key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
     - name: Do the test still pass in our new template?
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator

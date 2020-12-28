@@ -72,9 +72,6 @@ ENV PATH /usr/src/app/bin:$PATH
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
 
-# Define the user running the container
-USER appuser
-
 FROM development AS production
 
 ENV RAILS_ENV production
@@ -101,3 +98,6 @@ RUN RAILS_SERVE_STATIC_FILES=enabled \
       SECRET_KEY_BASE=secret-key-base \
       bundle exec rake assets:precompile \
       && bundle exec bootsnap precompile --gemfile app/ lib/
+
+# Define the user running the container
+USER appuser
