@@ -89,13 +89,18 @@ COPY Gemfile.lock /usr/src/app
 # Install Ruby Gems
 RUN bundle config set deployment 'true' \
       && bundle config set without 'development:test' \
-      && bundle check || bundle install
+      && bundle check || bundle install --jobs=$(nproc)
 
 COPY package.json /usr/src/app
 COPY yarn.lock /usr/src/app
 
 # Install Yarn Libraries
 RUN yarn install --check-files
+
+COPY --chown=appuser:appgroup . usr/src/app
+
+# Tidy up installation
+RUN apk update && apk del build-dependencies
 
 # Precompile the assets & bootsnap
 RUN RAILS_SERVE_STATIC_FILES=enabled \
