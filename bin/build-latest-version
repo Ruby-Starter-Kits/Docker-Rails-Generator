@@ -3,6 +3,7 @@
 echo "Building Environment"
   cd $GITHUB_WORKSPACE/App
   bundle config path $GITHUB_WORKSPACE/vendor/bundle
+  bundle config set jobs $(nproc)
   gem install rails
 
 echo "Clear previous build"

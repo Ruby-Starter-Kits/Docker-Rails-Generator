@@ -50,6 +50,7 @@ ENV BUNDLE_PATH /usr/local/bundle
 RUN addgroup -g 1000 -S appgroup \
       && adduser -u 1000 -S appuser -G appgroup
 
+# Install multiple gems at the same time
 RUN bundle config set jobs $(nproc)
 
 # Create app directory in conventional, existing dir /usr/src
@@ -87,7 +88,7 @@ COPY Gemfile.lock /usr/src/app
 # Install Ruby Gems
 RUN bundle config set deployment 'true' \
       && bundle config set without 'development:test' \
-      && bundle check || bundle install --jobs=$(nproc)
+      && bundle check || bundle install
 
 COPY package.json /usr/src/app
 COPY yarn.lock /usr/src/app
