@@ -97,10 +97,7 @@ COPY yarn.lock /usr/src/app
 # Install Yarn Libraries
 RUN yarn install --check-files
 
-COPY --chown=appuser:appgroup . usr/src/app
-
-# Tidy up installation
-RUN apk update && apk del build-dependencies
+COPY --chown=appuser:appgroup . /usr/src/app
 
 # Precompile the assets & bootsnap
 RUN RAILS_SERVE_STATIC_FILES=enabled \
