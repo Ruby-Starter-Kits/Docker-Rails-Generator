@@ -12,8 +12,13 @@
 - Renaming Docker-Rails-New \> Docker-Rails-Template [\#6](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/6) ([MikeRogers0](https://github.com/MikeRogers0))
 - Auto building the "Docker-Rails-New" repo from our template [\#4](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/4) ([MikeRogers0](https://github.com/MikeRogers0))
 
+**Closed issues:**
+
+- PostgreSQL log mount makes log directory unwritable by Rails [\#49](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/issues/49)
+
 **Merged pull requests:**
 
+- Stop outputting postgres logs to ./log [\#50](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/50) ([MikeRogers0](https://github.com/MikeRogers0))
 - Renaming FactoryBot spec file to match what Rubocop expects [\#48](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/48) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding factory\_bot [\#47](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/47) ([MikeRogers0](https://github.com/MikeRogers0))
 - Tidying up env & generators file [\#46](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/46) ([MikeRogers0](https://github.com/MikeRogers0))
