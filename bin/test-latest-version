@@ -2,10 +2,11 @@
 
 echo "Building Latest Version"
   cd $GITHUB_WORKSPACE/App
-  docker-compose -f docker-compose.ci.yml build test || exit $?
+  docker-compose build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)"
+  docker-compose -f docker-compose.ci.yml build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)" test || exit $?
 
 echo "Running Tests in local version"
-  docker-compose -f docker-compose.ci.yml run --rm test || exit $?
+  docker-compose -f docker-compose.ci.yml run --rm test --user="$(id -u):$(id -g)" || exit $?
 
 echo "Cleaning up unused images"
   docker image prune -f

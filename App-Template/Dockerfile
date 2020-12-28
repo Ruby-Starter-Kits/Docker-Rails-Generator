@@ -46,9 +46,13 @@ ENV EDITOR vim
 ENV LANG en_US.UTF-8
 ENV BUNDLE_PATH /usr/local/bundle
 
+# Set build args. these let linux users not run into file permission problems
+ARG USER_ID=${USER_ID:-1000}
+ARG GROUP_ID=${GROUP_ID:-1000}
+
 # Add non-root user and group with alpine first available uid, 1000
-RUN addgroup -g 1000 -S appgroup \
-      && adduser -u 1000 -S appuser -G appgroup
+RUN addgroup -g $USER_ID -S appgroup \
+      && adduser -u $GROUP_ID -S appuser -G appgroup
 
 # Install multiple gems at the same time
 RUN bundle config set jobs $(nproc)
