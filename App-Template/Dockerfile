@@ -1,5 +1,4 @@
 FROM ruby:2.7.2-alpine AS builder
-
 LABEL maintainer="Mike Rogers <me@mikerogers.io>"
 
 RUN apk --no-cache add --virtual build-dependencies \
@@ -42,7 +41,7 @@ RUN apk --no-cache add \
 FROM builder AS development
 
 # Set common ENVs
-ARG BOOTSNAP_CACHE_DIR=${BOOTSNAP_CACHE_DIR:-/usr/src/bootsnap}
+ENV BOOTSNAP_CACHE_DIR /usr/src/bootsnap
 
 # Add non-root user and group with alpine first available uid, 1000
 RUN addgroup -g 1000 -S appgroup \
@@ -50,6 +49,11 @@ RUN addgroup -g 1000 -S appgroup \
 
 # Create app directory in conventional, existing dir /usr/src
 RUN mkdir -p /usr/src/app \
+      && mkdir -p /usr/src/app/node_modules \
+      && mkdir -p /usr/src/app/public/packs \
+      && mkdir -p /usr/src/app/public/packs-test \
+      && mkdir -p /usr/src/app/tmp/cache \
+      && mkdir -p /usr/src/app/storage \
       && mkdir -p $BOOTSNAP_CACHE_DIR \
       && chown -R appuser:appgroup /usr/src/app \
       && chown -R appuser:appgroup $BOOTSNAP_CACHE_DIR
@@ -59,6 +63,9 @@ ENV PATH /usr/src/app/bin:$PATH
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+
+# Define the user running the container
+USER appuser
 
 FROM development AS production
 
@@ -86,6 +93,3 @@ RUN RAILS_SERVE_STATIC_FILES=enabled \
       SECRET_KEY_BASE=secret-key-base \
       bundle exec rake assets:precompile \
       && bundle exec bootsnap precompile --gemfile app/ lib/
-
-# Define the user running the container
-USER appuser
