@@ -60,3 +60,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
         ./bin/test-latest-version
+    - name: What would we be committing?
+      run: |
+        cd $GITHUB_WORKSPACE/App
+        git status
