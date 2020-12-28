@@ -5,8 +5,6 @@ echo "Building Latest Version"
   docker-compose -f docker-compose.ci.yml build test || exit $?
 
 echo "Running Tests in local version"
-  docker-compose -f docker-compose.ci.yml run --rm test ls -al
-  docker-compose -f docker-compose.ci.yml run --rm test bash -c "cd vendor/bundle && ls -al"
   docker-compose -f docker-compose.ci.yml run --rm test || exit $?
 
 echo "Cleaning up unused images"

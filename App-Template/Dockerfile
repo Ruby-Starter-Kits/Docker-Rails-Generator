@@ -57,10 +57,7 @@ RUN bundle config set jobs $(nproc)
 RUN mkdir -p /usr/src/app \
       && mkdir -p /usr/src/app/node_modules \
       && mkdir -p /usr/src/app/public/packs \
-      && mkdir -p /usr/src/app/public/packs-test \
       && mkdir -p /usr/src/app/tmp/cache \
-      && mkdir -p /usr/src/app/storage \
-      && mkdir -p /usr/src/app/vendor/bundle \
       && mkdir -p $BOOTSNAP_CACHE_DIR \
       && chown -R appuser:appgroup /usr/src/app \
       && chown -R appuser:appgroup $BUNDLE_PATH \
@@ -68,6 +65,9 @@ RUN mkdir -p /usr/src/app \
 WORKDIR /usr/src/app
 
 ENV PATH /usr/src/app/bin:$PATH
+
+# Define the user running the container
+USER appuser
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
@@ -98,6 +98,3 @@ RUN RAILS_SERVE_STATIC_FILES=enabled \
       SECRET_KEY_BASE=secret-key-base \
       bundle exec rake assets:precompile \
       && bundle exec bootsnap precompile --gemfile app/ lib/
-
-# Define the user running the container
-USER appuser
