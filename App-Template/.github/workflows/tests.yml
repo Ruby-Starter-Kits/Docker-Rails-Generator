@@ -33,10 +33,10 @@ jobs:
           key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
       - name: Build Latest
         run: |
-          docker-compose -f docker-compose.ci.yml build test
+          docker-compose -f docker-compose.ci.yml build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)" test
       - name: Run tests
         run: |
-          docker-compose -f docker-compose.ci.yml run --rm test
+          docker-compose -f docker-compose.ci.yml run --rm --user="$(id -u):$(id -g)" test
       - name: Clean Up After Tests
         run: |
           docker image prune -f
