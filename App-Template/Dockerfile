@@ -56,10 +56,9 @@ RUN mkdir -p /usr/src/app \
       && mkdir -p /usr/src/app/public/packs-test \
       && mkdir -p /usr/src/app/tmp/cache \
       && mkdir -p /usr/src/app/storage \
-      && mkdir -p /usr/local/bundle \
+      && mkdir -p $BUNDLE_PATH \
       && mkdir -p $BOOTSNAP_CACHE_DIR \
       && chown -R appuser:appgroup /usr/src/app \
-      && chown -R appuser:appgroup /usr/local/bundle \
       && chown -R appuser:appgroup $BOOTSNAP_CACHE_DIR
 WORKDIR /usr/src/app
 
