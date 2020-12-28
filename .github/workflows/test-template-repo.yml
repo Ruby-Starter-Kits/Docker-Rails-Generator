@@ -1,4 +1,4 @@
-name: Update Template Repo
+name: Test New Template
 
 on:
   pull_request:
