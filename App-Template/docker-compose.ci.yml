@@ -14,7 +14,6 @@ x-ci-app: &ci-app
     DATABASE_URL: postgres://postgres:postgres@postgres:5432/
     RAILS_ENV: test
     RACK_ENV: test
-    BUNDLE_PATH: /usr/src/app/vendor/bundle
   volumes:
     - .:/usr/src/app:cached
     - ./node_modules:/usr/src/app/node_modules:cached
