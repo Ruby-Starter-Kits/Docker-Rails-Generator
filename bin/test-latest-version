@@ -2,8 +2,11 @@
 
 echo "Building Latest Version"
   cd $GITHUB_WORKSPACE/App
-  docker-compose build  || exit $?
   docker-compose -f docker-compose.ci.yml build test || exit $?
+
+echo "Running Tests in local version"
   docker-compose -f docker-compose.ci.yml run --rm test || exit $?
+
+echo "Cleaning up unused images"
   docker image prune -f
   docker volume prune -f
