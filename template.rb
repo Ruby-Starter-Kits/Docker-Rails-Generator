@@ -15,3 +15,6 @@ files = [
 files.each do |file_path|
   file file_path, URI.open("#{base_uri}#{file_path}").read
 end
+
+run("docker-compose build") if yes?("Build Docker Image?")
+run("docker-compose run --rm web bin/setup") if yes?("Run bin/setup within your new container?")
