@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Adding option to turn on Rails app after template has run [\#53](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/53) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding letter opener volume [\#52](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/52) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding app:template command for rails [\#51](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/51) ([MikeRogers0](https://github.com/MikeRogers0))
 - Stop outputting postgres logs to ./log [\#50](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/50) ([MikeRogers0](https://github.com/MikeRogers0))
