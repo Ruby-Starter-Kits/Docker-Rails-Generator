@@ -5,7 +5,7 @@ def open(url)
   Net::HTTP.get(URI.parse(url))
 end
 
-base_uri = 'https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Generator/feature/copy-command/'
+base_uri = 'https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Generator/feature/copy-command/App-Template/'
 
 files = [
   '.dockerignore',

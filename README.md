@@ -5,7 +5,7 @@ This generates the [Ruby-Starter-Kits/Docker-Rails-Template](https://github.com/
 ## Apply to existing Rails Project
 
 ```bash
-bin/rails app:template LOCATION=https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Generator/feature/copy-command/template.rb
+$ bin/rails app:template LOCATION=https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Generator/feature/copy-command/template.rb
 ```
 
 ## Contributing
