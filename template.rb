@@ -1,13 +1,11 @@
-require 'net/http'
-require 'uri'
+require 'open-uri'
 
-def open(url)
-  Net::HTTP.get(URI.parse(url))
-end
-
-base_uri = 'https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Generator/feature/copy-command/App-Template/'
+base_uri = 'https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Generator/master/App-Template/'
 
 files = [
+  '.github/workflows/tests.yml',
+  'config/cable.yml',
+  'config/database.yml',
   '.dockerignore',
   'docker-compose.ci.yml',
   'docker-compose.yml',
@@ -15,5 +13,5 @@ files = [
 ]
 
 files.each do |file_path|
-  file file_path, open("#{base_uri}#{file_path}")
+  file file_path, URI.open("#{base_uri}#{file_path}").read
 end
