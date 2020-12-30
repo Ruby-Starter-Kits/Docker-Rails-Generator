@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Adding letter opener volume [\#52](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/52) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding app:template command for rails [\#51](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/51) ([MikeRogers0](https://github.com/MikeRogers0))
 - Stop outputting postgres logs to ./log [\#50](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/50) ([MikeRogers0](https://github.com/MikeRogers0))
 - Renaming FactoryBot spec file to match what Rubocop expects [\#48](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/48) ([MikeRogers0](https://github.com/MikeRogers0))
