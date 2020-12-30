@@ -15,5 +15,5 @@ files = [
 ]
 
 files.each do |file_path|
-  file 'docker-compose.ci.yml', open("#{base_uri}#{file_path}")
+  file file_path, open("#{base_uri}#{file_path}")
 end
