@@ -2,11 +2,15 @@
 
 This generates the [Ruby-Starter-Kits/Docker-Rails-Template](https://github.com/Ruby-Starter-Kits/Docker-Rails-Template) template repository. It's the latest version of [Ruby on Rails](https://rubyonrails.org/), with all the files required to run via Docker.
 
-## Apply to existing Rails Project
+## Apply To An Existing Rails Project
+
+You can copy the Docker files into your existing Rails project by running:
 
 ```bash
 $ bin/rails app:template LOCATION=https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Generator/master/template.rb
 ```
+
+This will copy the core docker files into your current application.
 
 ## Contributing
 
