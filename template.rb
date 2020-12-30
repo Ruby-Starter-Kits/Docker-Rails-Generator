@@ -16,7 +16,7 @@ files.each do |file_path|
   file file_path, URI.open("#{base_uri}#{file_path}").read
 end
 
-run("docker-compose build && docker-compose run --rm web bin/setup") if yes?("Build Docker Enviroment?")
+run("docker-compose build && docker-compose run --rm web bin/setup") if yes?("Build Docker Environment?")
 
 if yes?("Start Your Ruby on Rails App?")
   run("docker-compose up")
