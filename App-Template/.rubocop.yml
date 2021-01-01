@@ -1,2 +1,13 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: disable
+  Exclude:
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - 'tmp/**/*'
+
 Style/FrozenStringLiteralComment:
   Enabled: false
