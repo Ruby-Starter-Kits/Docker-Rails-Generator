@@ -46,7 +46,6 @@ echo "Setup Libraries I Often Use & Remove stuff I don't use"
   gem install happy_gemfile
   happy_gemfile all
   bundle
-  bundle exec standardrb Gemfile --fix
 
   echo "Running Standard over everything"
   bundle exec standardrb --fix
