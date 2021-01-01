@@ -18,6 +18,9 @@ jobs:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Generator'
         path: Docker-Rails-Generator
         persist-credentials: false
+    - name: Switching to Root Directory
+      run: |
+        cd $GITHUB_WORKSPACE/
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
