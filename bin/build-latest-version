@@ -46,7 +46,12 @@ echo "Setup Libraries I Often Use & Remove stuff I don't use"
   gem install happy_gemfile
   happy_gemfile all
   bundle
-  bundle exec rubocop Gemfile -A
 
-  echo "Running RuboCop over everything"
-  bundle exec rubocop -A --auto-gen-config
+  echo "Fixing know weird non-standard Rails files"
+  gem install rubocop
+  gem install standardrb
+  rubocop -A
+  rm .rubocop.yml
+
+  echo "Running Standard over everything"
+  bundle exec standardrb --fix

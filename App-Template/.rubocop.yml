@@ -1,8 +1,3 @@
-require:
-  - rubocop-rails
-  - rubocop-performance
-  - rubocop-rspec
-
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: disable
@@ -16,7 +11,3 @@ AllCops:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
