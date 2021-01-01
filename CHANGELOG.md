@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Changing missed reference to Rubocop \> Standard [\#56](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/56) ([MikeRogers0](https://github.com/MikeRogers0))
 - Switching back to root directory to store the caches more corectly [\#55](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/55) ([MikeRogers0](https://github.com/MikeRogers0))
 - Use Standard over Rubocop [\#54](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/54) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding option to turn on Rails app after template has run [\#53](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/53) ([MikeRogers0](https://github.com/MikeRogers0))
