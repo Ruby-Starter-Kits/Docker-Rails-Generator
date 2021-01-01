@@ -29,11 +29,11 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/*/Gemfile.lock') }}
     - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/App/node_modules
-        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/*/package.json') }}
     - name: Build latest version of app
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
@@ -45,20 +45,20 @@ jobs:
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0
       with:
-        key: test-${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+        key: test-${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
     - name: Cache Assets
       uses: actions/cache@v2
       with:
         path: |
           $GITHUB_WORKSPACE/App/public/assets
           $GITHUB_WORKSPACE/App/public/packs-test
-        key: ${{ runner.os }}-assets-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-assets-${{ hashFiles('**/*/yarn.lock') }}
     - name: Cache gems
       uses: actions/cache@v2
       with:
         path: |
           $GITHUB_WORKSPACE/App/vendor/bundle
-        key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-bundle-${{ hashFiles('**/*/Gemfile.lock') }}
     - name: Do the test still pass in our new template?
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
