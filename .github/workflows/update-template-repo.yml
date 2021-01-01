@@ -23,9 +23,6 @@ jobs:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Generator'
         path: Docker-Rails-Generator
         persist-credentials: false
-    - name: Switching to Root Directory
-      run: |
-        cd $GITHUB_WORKSPACE/
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
@@ -34,11 +31,11 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/*/Gemfile.lock') }}
     - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/App/node_modules
-        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package.json') }}
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/*/package.json') }}
     - name: Build latest version of app
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
@@ -50,20 +47,20 @@ jobs:
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0
       with:
-        key: test-${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+        key: test-${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
     - name: Cache Assets
       uses: actions/cache@v2
       with:
         path: |
           $GITHUB_WORKSPACE/App/public/assets
           $GITHUB_WORKSPACE/App/public/packs-test
-        key: ${{ runner.os }}-assets-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-assets-${{ hashFiles('**/*/yarn.lock') }}
     - name: Cache gems
       uses: actions/cache@v2
       with:
         path: |
           $GITHUB_WORKSPACE/App/vendor/bundle
-        key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-bundle-${{ hashFiles('**/*/Gemfile.lock') }}
     - name: Test we can build the docker image & the test still pass
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
@@ -84,6 +81,3 @@ jobs:
         github_token: ${{ secrets.LOCAL_GIT_TOKEN }}
         repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
         directory: App
-    - name: Switching to Root Directory
-      run: |
-        cd $GITHUB_WORKSPACE/
