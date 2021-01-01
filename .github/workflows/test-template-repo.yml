@@ -18,9 +18,6 @@ jobs:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Generator'
         path: Docker-Rails-Generator
         persist-credentials: false
-    - name: Switching to Root Directory
-      run: |
-        cd $GITHUB_WORKSPACE/
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
@@ -52,13 +49,13 @@ jobs:
         path: |
           $GITHUB_WORKSPACE/App/public/assets
           $GITHUB_WORKSPACE/App/public/packs-test
-        key: test-${{ runner.os }}-assets-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-assets-${{ hashFiles('**/yarn.lock') }}
     - name: Cache gems
       uses: actions/cache@v2
       with:
         path: |
           $GITHUB_WORKSPACE/App/vendor/bundle
-        key: test-${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
     - name: Do the test still pass in our new template?
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
