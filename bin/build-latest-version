@@ -2,6 +2,7 @@
 
 echo "Create app with latest version of Rails"
   cd $GITHUB_WORKSPACE/App
+  gem install rails
   rails new . --database=postgresql --skip-spring
 
 echo "Remove default Rails files I often remove pretty fast"
