@@ -28,6 +28,10 @@ jobs:
       with:
         ruby-version: 2.7.2
         bundler: none
+    - name: Build Environment for building app
+      run: |
+        cd $GITHUB_WORKSPACE/Docker-Rails-Generator
+        ./bin/build-environment-for-building-app
     - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/vendor/bundle

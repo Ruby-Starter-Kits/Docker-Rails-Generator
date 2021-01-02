@@ -1,16 +1,5 @@
 #!/bin/bash
 
-echo "Setting up Environment"
-  cd $GITHUB_WORKSPACE/App
-  bundle config path $GITHUB_WORKSPACE/vendor/bundle
-  bundle config set jobs $(nproc)
-  gem install rails
-
-echo "Clear previous build"
-  cd $GITHUB_WORKSPACE/App
-  shopt -s extglob
-  rm -rfv !(".git"|"."|".."|"node_modules")
-
 echo "Create app with latest version of Rails"
   cd $GITHUB_WORKSPACE/App
   rails new . --database=postgresql --skip-spring
