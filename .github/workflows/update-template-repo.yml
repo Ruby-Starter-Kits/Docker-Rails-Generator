@@ -47,7 +47,9 @@ jobs:
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0
       with:
-        key: test-${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
     - name: Cache Assets
       uses: actions/cache@v2
       with:
