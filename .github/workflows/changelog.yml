@@ -20,9 +20,9 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        key: changelog-${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}-gem-
+          changelog-${{ runner.os }}-gem-
     - name: Create local changes
       run: |
         gem install github_changelog_generator

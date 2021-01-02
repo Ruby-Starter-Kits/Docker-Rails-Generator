@@ -34,12 +34,12 @@ jobs:
         ./bin/build-environment-for-building-app
     - uses: actions/cache@v2
       with:
-        path: ${{ github.workspace }}/vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/*/Gemfile.lock') }}
+        path: v1-${{ github.workspace }}/vendor/bundle
+        key: v1-${{ runner.os }}-gem-${{ hashFiles('**/*/Gemfile.lock') }}
     - uses: actions/cache@v2
       with:
-        path: ${{ github.workspace }}/App/node_modules
-        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/*/package.json') }}
+        path: v1-${{ github.workspace }}/App/node_modules
+        key: v1-${{ runner.os }}-node_modules-${{ hashFiles('**/*/package.json') }}
     - name: Build latest version of app
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
@@ -51,22 +51,22 @@ jobs:
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0
       with:
-        key: ${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
+        key: v1-${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
         restore-keys: |
-          ${{ runner.os }}-docker-
+          v1-${{ runner.os }}-docker-
     - name: Cache Assets
       uses: actions/cache@v2
       with:
         path: |
           ${{ github.workspace }}/App/public/assets
           ${{ github.workspace }}/App/public/packs-test
-        key: ${{ runner.os }}-assets-${{ hashFiles('**/*/yarn.lock') }}
+        key: v1-${{ runner.os }}-assets-${{ hashFiles('**/*/yarn.lock') }}
     - name: Cache gems
       uses: actions/cache@v2
       with:
         path: |
           ${{ github.workspace }}/App/vendor/bundle
-        key: ${{ runner.os }}-bundle-${{ hashFiles('**/*/Gemfile.lock') }}
+        key: v1-${{ runner.os }}-bundle-${{ hashFiles('**/*/Gemfile.lock') }}
     - name: Test we can build the docker image & the test still pass
       run: |
         cd $GITHUB_WORKSPACE/Docker-Rails-Generator
