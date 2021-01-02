@@ -62,7 +62,7 @@ RUN bundle config set jobs $(nproc)
 # Create app directory in the conventional /usr/src/app
 RUN mkdir -p /usr/src/app \
       && chown -R appuser:appgroup /usr/src/app \
-      && chown -R appuser:appgroup $BUNDLE_PATH \
+      && chown -R appuser:appgroup $BUNDLE_PATH
 WORKDIR /usr/src/app
 
 ENV PATH /usr/src/app/bin:$PATH
