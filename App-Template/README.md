@@ -1,5 +1,7 @@
 <p align="center">
+
   [![Use this template](https://img.shields.io/badge/Use_this_template-2ea44f?style=for-the-badge&logo=github)](https://github.com/Ruby-Starter-Kits/Docker-Rails-Template/generate)
+
 </p>
 
 # Rails App
@@ -41,7 +43,7 @@ $ pg_restore --verbose --clean --no-acl --no-owner -j 2 -h localhost -d App_deve
 
 The template comes preconfigured with [RSpec](https://rspec.info/) for tests, and comes with a [GitHub Action](https://github.com/Ruby-Starter-Kits/Docker-Rails-Template/blob/master/.github/workflows/tests.yml) to run them when you push to GitHub.
 
-You can run them locally by running:
+You can run RSpec locally by running:
 
 ```bash
 $ docker-compose -f docker-compose.ci.yml run --rm test
