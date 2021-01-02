@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Setting up Environment"
+  cd $GITHUB_WORKSPACE/App
+  bundle config path $GITHUB_WORKSPACE/vendor/bundle
+  bundle config set jobs $(nproc)
+
+echo "Clear previous build"
+  cd $GITHUB_WORKSPACE/App
+  shopt -s extglob
+  rm -rfv !(".git"|"."|".."|"node_modules")

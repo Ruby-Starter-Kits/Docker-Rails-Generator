@@ -23,6 +23,10 @@ jobs:
       with:
         ruby-version: 2.7.2
         bundler: none
+    - name: Build Environment for building app
+      run: |
+        cd $GITHUB_WORKSPACE/Docker-Rails-Generator
+        ./bin/build-environment-for-building-app
     - uses: actions/cache@v2
       with:
         path: ${{ github.workspace }}/vendor/bundle
@@ -42,19 +46,21 @@ jobs:
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0
       with:
-        key: test-${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
     - name: Cache Assets
       uses: actions/cache@v2
       with:
         path: |
-          $GITHUB_WORKSPACE/App/public/assets
-          $GITHUB_WORKSPACE/App/public/packs-test
+          ${{ github.workspace }}/App/public/assets
+          ${{ github.workspace }}/App/public/packs-test
         key: ${{ runner.os }}-assets-${{ hashFiles('**/*/yarn.lock') }}
     - name: Cache gems
       uses: actions/cache@v2
       with:
         path: |
-          $GITHUB_WORKSPACE/App/vendor/bundle
+          ${{ github.workspace }}/App/vendor/bundle
         key: ${{ runner.os }}-bundle-${{ hashFiles('**/*/Gemfile.lock') }}
     - name: Do the test still pass in our new template?
       run: |
