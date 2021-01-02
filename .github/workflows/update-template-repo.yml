@@ -58,14 +58,14 @@ jobs:
       uses: actions/cache@v2
       with:
         path: |
-          $GITHUB_WORKSPACE/App/public/assets
-          $GITHUB_WORKSPACE/App/public/packs-test
+          ${{ github.workspace }}/App/public/assets
+          ${{ github.workspace }}/App/public/packs-test
         key: ${{ runner.os }}-assets-${{ hashFiles('**/*/yarn.lock') }}
     - name: Cache gems
       uses: actions/cache@v2
       with:
         path: |
-          $GITHUB_WORKSPACE/App/vendor/bundle
+          ${{ github.workspace }}/App/vendor/bundle
         key: ${{ runner.os }}-bundle-${{ hashFiles('**/*/Gemfile.lock') }}
     - name: Test we can build the docker image & the test still pass
       run: |
