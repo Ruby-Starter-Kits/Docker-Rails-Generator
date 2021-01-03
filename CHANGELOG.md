@@ -18,6 +18,10 @@
 
 **Merged pull requests:**
 
+- Setting the default branch when pushing [\#60](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/60) ([MikeRogers0](https://github.com/MikeRogers0))
+- Seperating our different caches with namespaces [\#59](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/59) ([MikeRogers0](https://github.com/MikeRogers0))
+- Explicitly setting restore keys for satackey/action-docker-layer-caching [\#58](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/58) ([MikeRogers0](https://github.com/MikeRogers0))
+- Re-writing readmes to be more appealing [\#57](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/57) ([MikeRogers0](https://github.com/MikeRogers0))
 - Changing missed reference to Rubocop \> Standard [\#56](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/56) ([MikeRogers0](https://github.com/MikeRogers0))
 - Switching back to root directory to store the caches more corectly [\#55](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/55) ([MikeRogers0](https://github.com/MikeRogers0))
 - Use Standard over Rubocop [\#54](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/54) ([MikeRogers0](https://github.com/MikeRogers0))
