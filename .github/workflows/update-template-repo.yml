@@ -88,3 +88,4 @@ jobs:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Template'
         branch: master
         directory: App
+        branch: ${{ github.ref }}
