@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Updating SendGrids opinionated default to use SENDGRID\_API\_KEY [\#61](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/61) ([MikeRogers0](https://github.com/MikeRogers0))
 - Setting the default branch when pushing [\#60](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/60) ([MikeRogers0](https://github.com/MikeRogers0))
 - Seperating our different caches with namespaces [\#59](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/59) ([MikeRogers0](https://github.com/MikeRogers0))
 - Explicitly setting restore keys for satackey/action-docker-layer-caching [\#58](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/58) ([MikeRogers0](https://github.com/MikeRogers0))
