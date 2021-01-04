@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Re-adding the volumes to the main docker container [\#63](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/63) ([MikeRogers0](https://github.com/MikeRogers0))
 - Removing duplicate reference to branch when updating repo [\#62](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/62) ([MikeRogers0](https://github.com/MikeRogers0))
 - Updating SendGrids opinionated default to use SENDGRID\_API\_KEY [\#61](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/61) ([MikeRogers0](https://github.com/MikeRogers0))
 - Setting the default branch when pushing [\#60](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/60) ([MikeRogers0](https://github.com/MikeRogers0))
