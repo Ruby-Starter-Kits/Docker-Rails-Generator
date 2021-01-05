@@ -8,7 +8,7 @@ RUN apk --no-cache add --virtual build-dependencies \
       libxml2-dev \
       libxslt-dev \
       # Postgres Client (for pg gem)
-      libpq-dev \
+      postgresql-client \
       # JavaScript
       yarn \
       # FFI Bindings in ruby (Run C Commands)
