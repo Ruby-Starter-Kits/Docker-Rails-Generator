@@ -7,8 +7,8 @@ RUN apk --no-cache add --virtual build-dependencies \
       zlib-dev \
       libxml2-dev \
       libxslt-dev \
-      # PG
-      postgresql-dev \
+      # Postgres Client (for pg gem)
+      libpq-dev \
       # JavaScript
       yarn \
       # FFI Bindings in ruby (Run C Commands)
@@ -19,8 +19,6 @@ RUN apk --no-cache add \
       file \
       # Time zone data
       tzdata \
-      # JavaScript
-      nodejs \
       # HTML to PDF conversion
       # ttf-ubuntu-font-family \
       # wkhtmltopdf \
