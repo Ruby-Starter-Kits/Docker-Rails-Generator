@@ -1,5 +1,6 @@
 # Dependabot: Disabled by default as it can be a little annoying to see a bunch of upgrade PRs
-#
+# Plus, I'm also worried about Dependabot as an vector for stealing test API data (e.g someone pushing a compromised
+# version of a library).
 #version: 2
 
 #updates:
