@@ -1,15 +1,17 @@
-version: 2
+# Dependabot: Disabled by default as it can be a little annoying to see a bunch of upgrade PRs
+#
+#version: 2
 
-updates:
+#updates:
 
-  # Maintain dependencies for GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
+  ## Maintain dependencies for GitHub Actions
+  #- package-ecosystem: "github-actions"
+    #directory: "/"
+    #schedule:
+      #interval: "daily"
 
-  # Maintain dependencies for Docker
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "daily"
+  ## Maintain dependencies for Docker
+  #- package-ecosystem: "docker"
+    #directory: "/"
+    #schedule:
+      #interval: "daily"
