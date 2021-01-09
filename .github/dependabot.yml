@@ -1,19 +1,15 @@
 version: 2
 
-# Dependabot: Disabled by default as it can be a little annoying to see a bunch of upgrade PRs
-# Plus, I'm also worried about Dependabot as an vector for stealing test API data (e.g someone pushing a compromised
-# version of a library).
-
 updates:
 
-  ## Maintain dependencies for GitHub Actions
-  #- package-ecosystem: "github-actions"
-    #directory: "/"
-    #schedule:
-      #interval: "daily"
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
 
-  ## Maintain dependencies for Docker
-  #- package-ecosystem: "docker"
-    #directory: "/"
-    #schedule:
-      #interval: "daily"
+  # Maintain dependencies for Docker
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
