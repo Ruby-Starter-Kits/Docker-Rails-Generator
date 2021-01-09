@@ -4,7 +4,7 @@ version: 2
 # Plus, I'm also worried about Dependabot as an vector for stealing test API data (e.g someone pushing a compromised
 # version of a library).
 
-#updates:
+updates:
 
   ## Maintain dependencies for GitHub Actions
   #- package-ecosystem: "github-actions"
