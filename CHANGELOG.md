@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Using ENV\["URL"\] for setting URL of host [\#70](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/70) ([MikeRogers0](https://github.com/MikeRogers0))
 - Clearing logs on startup [\#68](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/68) ([MikeRogers0](https://github.com/MikeRogers0))
 - Fixing Rubocop reference in standardrb file [\#67](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/67) ([MikeRogers0](https://github.com/MikeRogers0))
 - Disabling dependabot by default [\#65](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/65) ([MikeRogers0](https://github.com/MikeRogers0))
