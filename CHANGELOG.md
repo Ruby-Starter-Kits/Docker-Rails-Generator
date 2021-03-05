@@ -19,6 +19,7 @@
 **Merged pull requests:**
 
 - Readding rubocop.yml for build-stage [\#73](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/73) ([MikeRogers0](https://github.com/MikeRogers0))
+- Removing RAILS\_ENV from Procfile [\#72](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/72) ([MikeRogers0](https://github.com/MikeRogers0))
 - Updating to Ruby 3.0 [\#71](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/71) ([MikeRogers0](https://github.com/MikeRogers0))
 - Using ENV\["URL"\] for setting URL of host [\#70](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/70) ([MikeRogers0](https://github.com/MikeRogers0))
 - Clearing logs on startup [\#68](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/68) ([MikeRogers0](https://github.com/MikeRogers0))
