@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Moving rubocop file to be hidden [\#74](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/74) ([MikeRogers0](https://github.com/MikeRogers0))
 - Readding rubocop.yml for build-stage [\#73](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/73) ([MikeRogers0](https://github.com/MikeRogers0))
 - Removing RAILS\_ENV from Procfile [\#72](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/72) ([MikeRogers0](https://github.com/MikeRogers0))
 - Updating to Ruby 3.0 [\#71](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/71) ([MikeRogers0](https://github.com/MikeRogers0))
