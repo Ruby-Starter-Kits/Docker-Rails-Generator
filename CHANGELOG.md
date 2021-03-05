@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Updating to Ruby 3.0 [\#71](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/71) ([MikeRogers0](https://github.com/MikeRogers0))
 - Using ENV\["URL"\] for setting URL of host [\#70](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/70) ([MikeRogers0](https://github.com/MikeRogers0))
 - Clearing logs on startup [\#68](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/68) ([MikeRogers0](https://github.com/MikeRogers0))
 - Fixing Rubocop reference in standardrb file [\#67](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/67) ([MikeRogers0](https://github.com/MikeRogers0))
