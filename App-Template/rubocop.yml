@@ -1,6 +1,8 @@
+# This reformats the Rails to follow the Rubocop cop basic standard, it's there because StandardRB
+# still isn't perfect.
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
   NewCops: disable
   Exclude:
     - 'db/schema.rb'
