@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Not sharing redis/postgres ports with host machine by default [\#77](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/77) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding storage as volume to docker-compose [\#16](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/16) ([MikeRogers0](https://github.com/MikeRogers0))
 - Setup custom database.yml [\#11](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/11) ([MikeRogers0](https://github.com/MikeRogers0))
 - Using rsync to copy hidden files [\#9](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/9) ([MikeRogers0](https://github.com/MikeRogers0))
@@ -14,10 +15,13 @@
 
 **Closed issues:**
 
+- Add ERB Lint [\#75](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/issues/75)
 - PostgreSQL log mount makes log directory unwritable by Rails [\#49](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/issues/49)
 
 **Merged pull requests:**
 
+- Locking github\_changelog\_generator to v1.15.2 [\#79](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/79) ([MikeRogers0](https://github.com/MikeRogers0))
+- Adding shared-mime-info package to Dockerfile [\#76](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/76) ([MikeRogers0](https://github.com/MikeRogers0))
 - Moving rubocop file to be hidden [\#74](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/74) ([MikeRogers0](https://github.com/MikeRogers0))
 - Readding rubocop.yml for build-stage [\#73](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/73) ([MikeRogers0](https://github.com/MikeRogers0))
 - Removing RAILS\_ENV from Procfile [\#72](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/72) ([MikeRogers0](https://github.com/MikeRogers0))
