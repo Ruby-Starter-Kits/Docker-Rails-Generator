@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Adding workflow dispatch for updating the template repo [\#80](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/80) ([MikeRogers0](https://github.com/MikeRogers0))
 - Locking github\_changelog\_generator to v1.15.2 [\#79](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/79) ([MikeRogers0](https://github.com/MikeRogers0))
 - Upgrading to Postgres 13.2 & Redis 6.0.12 [\#78](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/78) ([MikeRogers0](https://github.com/MikeRogers0))
 - Adding shared-mime-info package to Dockerfile [\#76](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/76) ([MikeRogers0](https://github.com/MikeRogers0))
