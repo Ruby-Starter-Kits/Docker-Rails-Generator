@@ -1,6 +1,7 @@
 name: Update Template Repo
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
