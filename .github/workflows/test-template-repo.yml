@@ -44,7 +44,7 @@ jobs:
         cd $GITHUB_WORKSPACE/App
         docker pull ruby:3.0.0-alpine
         docker-compose pull
-    - uses: satackey/action-docker-layer-caching@v0
+    - uses: satackey/action-docker-layer-caching@v0.0.11
       with:
         key: ${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
         restore-keys: |
