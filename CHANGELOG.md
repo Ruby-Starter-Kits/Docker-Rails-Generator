@@ -22,6 +22,7 @@
 **Merged pull requests:**
 
 - Upgrading to Docker Compose V3 [\#84](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/84) ([MikeRogers0](https://github.com/MikeRogers0))
+- Upgrade to GitHub-native Dependabot [\#81](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/81) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Adding workflow dispatch for updating the template repo [\#80](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/80) ([MikeRogers0](https://github.com/MikeRogers0))
 - Locking github\_changelog\_generator to v1.15.2 [\#79](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/79) ([MikeRogers0](https://github.com/MikeRogers0))
 - Upgrading to Postgres 13.2 & Redis 6.0.12 [\#78](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/78) ([MikeRogers0](https://github.com/MikeRogers0))
