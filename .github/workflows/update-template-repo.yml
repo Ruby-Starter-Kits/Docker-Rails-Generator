@@ -49,7 +49,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/App
         docker pull ruby:3.0.0-alpine
-        docker-compose pull
+        docker compose pull
     - uses: satackey/action-docker-layer-caching@v0
       with:
         key: ${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}

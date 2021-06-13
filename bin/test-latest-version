@@ -2,11 +2,11 @@
 
 echo "Building Docker Image"
   cd $GITHUB_WORKSPACE/App
-  docker-compose build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)"
-  docker-compose -f docker-compose.ci.yml build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)" test || exit $?
+  docker compose build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)"
+  docker compose -f docker-compose.ci.yml build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)" test || exit $?
 
 echo "Running Tests"
-  docker-compose -f docker-compose.ci.yml run --rm --user="$(id -u):$(id -g)" test || exit $?
+  docker compose -f docker-compose.ci.yml run --rm --user="$(id -u):$(id -g)" test || exit $?
 
 echo "Cleaning Up unused data"
   docker image prune -f
