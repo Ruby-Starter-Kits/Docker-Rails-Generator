@@ -27,7 +27,7 @@ jobs:
     - name: Set up Ruby 3.0
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.0
+        ruby-version: 3.0.1
         bundler: none
     - name: Build Environment for building app
       run: |
@@ -48,7 +48,7 @@ jobs:
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
-        docker pull ruby:3.0.0-alpine
+        docker pull ruby:3.0.1-alpine
         docker-compose pull
     - uses: satackey/action-docker-layer-caching@v0
       with:
