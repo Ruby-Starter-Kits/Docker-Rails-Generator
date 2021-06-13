@@ -20,7 +20,6 @@ x-ci-app: &ci-app
   entrypoint: ./bin/docker/entrypoints/wait-for-postgres.sh
   volumes:
     - .:/usr/src/app:cached
-
   depends_on:
     - postgres
 
@@ -36,4 +35,4 @@ services:
 
   test:
     <<: *ci-app
-    command: bash -c "bin/setup && bundle exec rake assets:precompile && bundle exec rspec"
+    command: bash -c "./bin/setup && ./bin/rake assets:precompile && ./bin/bundle exec rspec"
