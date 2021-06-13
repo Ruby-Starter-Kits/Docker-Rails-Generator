@@ -14,7 +14,7 @@ jobs:
         run: |
           docker pull ruby:3.0.0-alpine
           docker pull postgres:13.2-alpine
-          docker-compose -f docker-compose.ci.yml pull
+          docker compose -f docker-compose.ci.yml pull
       - uses: satackey/action-docker-layer-caching@v0
         with:
           key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
@@ -36,10 +36,10 @@ jobs:
           key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
       - name: Build Latest
         run: |
-          docker-compose -f docker-compose.ci.yml build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)" test
+          docker compose -f docker-compose.ci.yml build --build-arg USER_ID="$(id -u)" --build-arg GROUP_ID="$(id -u)" test
       - name: Run tests
         run: |
-          docker-compose -f docker-compose.ci.yml run --rm --user="$(id -u):$(id -g)" test
+          docker compose -f docker-compose.ci.yml run --rm --user="$(id -u):$(id -g)" test
       - name: Clean Up After Tests
         run: |
           docker image prune -f

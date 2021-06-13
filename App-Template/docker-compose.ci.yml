@@ -3,15 +3,14 @@
 #
 ## Usage:
 #
-# docker-compose -f docker-compose.ci.yml build test
-# docker-compose -f docker-compose.ci.yml run --rm test
+# docker compose -f docker-compose.ci.yml build test
+# docker compose -f docker-compose.ci.yml run --rm test
 #
 # Docker Compose 2.4 is for local development
 # https://www.heroku.com/podcasts/codeish/57-discussing-docker-containers-and-kubernetes-with-a-docker-captain - Source on that.
 version: '2.4'
 
 x-ci-app: &ci-app
-  image: rails-app:0.3.0
   mem_limit: 512m
   build:
     context: .
