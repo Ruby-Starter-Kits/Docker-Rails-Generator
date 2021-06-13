@@ -75,7 +75,7 @@ jobs:
     - name: Commit any new files
       run: |
         cd $GITHUB_WORKSPACE/App
-        DOCKER_RAILS_INSTALLER_VERSION="Installer 0.4.0"
+        DOCKER_RAILS_INSTALLER_VERSION="Installer 1.0.0"
         RAILS_VERSION=`rails -v`
 
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
