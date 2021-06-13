@@ -4,6 +4,9 @@ base_uri = "https://raw.githubusercontent.com/Ruby-Starter-Kits/Docker-Rails-Gen
 
 files = [
   ".github/workflows/tests.yml",
+  "bin/docker/entrypoints/wait-for-postgres.sh",
+  "bin/docker/entrypoints/wait-for-web.sh",
+  "bin/docker/prepare-to-start-rails",
   "config/cable.yml",
   "config/database.yml",
   ".dockerignore",
