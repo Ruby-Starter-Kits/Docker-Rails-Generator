@@ -21,6 +21,7 @@
 
 **Merged pull requests:**
 
+- Some of the files were consistent, so fixing adhoc bits [\#85](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/85) ([MikeRogers0](https://github.com/MikeRogers0))
 - Upgrading to Docker Compose V3 [\#84](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/84) ([MikeRogers0](https://github.com/MikeRogers0))
 - Upgrade to GitHub-native Dependabot [\#81](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/81) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Adding workflow dispatch for updating the template repo [\#80](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/80) ([MikeRogers0](https://github.com/MikeRogers0))
