@@ -24,7 +24,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-# Rails Specific libaries
+# Rails Specific libraries
 RUN apk --no-cache add \
       # ActiveStorage file inspection
       file \
