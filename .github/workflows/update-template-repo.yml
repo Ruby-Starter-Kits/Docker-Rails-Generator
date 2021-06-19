@@ -48,8 +48,8 @@ jobs:
     - name: Pull docker image
       run: |
         cd $GITHUB_WORKSPACE/App
-        docker pull ruby:3.0.1-alpine
-        docker-compose pull
+        docker pull ruby:3.0.1-alpine --quiet
+        docker-compose pull --quiet
     - uses: satackey/action-docker-layer-caching@v0
       with:
         key: ${{ runner.os }}-docker-${{ hashFiles('**/*/Dockerfile') }}
