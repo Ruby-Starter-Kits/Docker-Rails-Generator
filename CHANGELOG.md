@@ -21,6 +21,7 @@
 
 **Merged pull requests:**
 
+- refactor: Additional wins for the Dockerfile [\#88](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/88) ([MikeRogers0](https://github.com/MikeRogers0))
 - Bumping installer version to 1.0.0 [\#87](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/87) ([MikeRogers0](https://github.com/MikeRogers0))
 - Upgrading to Ruby 3.0.1 [\#86](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/86) ([MikeRogers0](https://github.com/MikeRogers0))
 - Some of the files were consistent, so fixing adhoc bits [\#85](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/85) ([MikeRogers0](https://github.com/MikeRogers0))
