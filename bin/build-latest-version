@@ -18,7 +18,6 @@ echo "Copy Docker Template Files"
 echo "Setup Libraries I Often Use & Remove stuff I don't use"
   cd $GITHUB_WORKSPACE/App
   bundle remove jbuilder
-  bundle remove web-console
 
   echo "Remove Minitest (Use RSpec instead)"
   rm -rf test
