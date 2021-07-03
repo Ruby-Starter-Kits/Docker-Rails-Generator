@@ -21,6 +21,7 @@
 
 **Merged pull requests:**
 
+- feat: Increasing timeout and retry interval [\#90](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/90) ([MikeRogers0](https://github.com/MikeRogers0))
 - feat: Adds support for web-console [\#89](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/89) ([MikeRogers0](https://github.com/MikeRogers0))
 - refactor: Additional wins for the Dockerfile [\#88](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/88) ([MikeRogers0](https://github.com/MikeRogers0))
 - Bumping installer version to 1.0.0 [\#87](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/87) ([MikeRogers0](https://github.com/MikeRogers0))
