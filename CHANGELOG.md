@@ -15,12 +15,15 @@
 
 **Closed issues:**
 
+- Permission defined error caused by yarn cache clean --all [\#91](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/issues/91)
 - Add ERB Lint [\#75](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/issues/75)
 - Use V3 of Docker-Compose [\#66](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/issues/66)
 - PostgreSQL log mount makes log directory unwritable by Rails [\#49](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/issues/49)
 
 **Merged pull requests:**
 
+- bug: Removing yarn cache clean --all from Dockerfile [\#93](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/93) ([MikeRogers0](https://github.com/MikeRogers0))
+- doc: Add example on how to generate Rails Master Key [\#92](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/92) ([MikeRogers0](https://github.com/MikeRogers0))
 - feat: Increasing timeout and retry interval [\#90](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/90) ([MikeRogers0](https://github.com/MikeRogers0))
 - feat: Adds support for web-console [\#89](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/89) ([MikeRogers0](https://github.com/MikeRogers0))
 - refactor: Additional wins for the Dockerfile [\#88](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/88) ([MikeRogers0](https://github.com/MikeRogers0))
