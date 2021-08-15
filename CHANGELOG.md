@@ -22,6 +22,7 @@
 
 **Merged pull requests:**
 
+- fix: Explicitly setting ActiveJob queue adapter [\#94](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/94) ([MikeRogers0](https://github.com/MikeRogers0))
 - bug: Removing yarn cache clean --all from Dockerfile [\#93](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/93) ([MikeRogers0](https://github.com/MikeRogers0))
 - doc: Add example on how to generate Rails Master Key [\#92](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/92) ([MikeRogers0](https://github.com/MikeRogers0))
 - feat: Increasing timeout and retry interval [\#90](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/90) ([MikeRogers0](https://github.com/MikeRogers0))
