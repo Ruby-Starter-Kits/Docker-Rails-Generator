@@ -22,6 +22,7 @@
 
 **Merged pull requests:**
 
+- fix: Mailtrap was unable to load the JSON as open\(\) wasn't loaded [\#96](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/96) ([MikeRogers0](https://github.com/MikeRogers0))
 - feat: Move common docker commands into bin files [\#95](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/95) ([MikeRogers0](https://github.com/MikeRogers0))
 - fix: Explicitly setting ActiveJob queue adapter [\#94](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/94) ([MikeRogers0](https://github.com/MikeRogers0))
 - bug: Removing yarn cache clean --all from Dockerfile [\#93](https://github.com/Ruby-Starter-Kits/Docker-Rails-Generator/pull/93) ([MikeRogers0](https://github.com/MikeRogers0))
