@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3.1.0
       with:
         repository: "Ruby-Starter-Kits/Docker-Rails-Template"
         path: App
         persist-credentials: false
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3.1.0
       with:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Generator'
         path: Docker-Rails-Generator
