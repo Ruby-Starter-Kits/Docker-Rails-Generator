@@ -14,12 +14,12 @@ jobs:
     timeout-minutes: 15
     if: "!contains(github.event.head_commit.message, '[nodoc]')"
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: "Ruby-Starter-Kits/Docker-Rails-Template"
         path: App
         persist-credentials: false
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: 'Ruby-Starter-Kits/Docker-Rails-Generator'
         path: Docker-Rails-Generator
